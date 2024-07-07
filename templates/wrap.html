@@ -214,10 +214,9 @@
                         <h3 class="widget_title"> Yo'nalishlar </h3>
                         <div class="menu-all-pages-container footer-menu">
                             <ul class="menu">
-                                <li><a href="#">   Ijtimoiy sohalar  </a></li>
-                                <li><a href="#">   Ijtimoiy sohalar  </a></li>
-                                <li><a href="#">   Ijtimoiy sohalar  </a></li>
-                                <li><a href="#">   Ijtimoiy sohalar  </a></li>
+                                 {% for direction in directions %}
+                                    <li><a href="/direction/{{direction.id}}">{{direction.name}}</a></li>
+                                {% endfor %}
                                 
                                 <li><a href="academic-program.html">Program FAQs</a></li>
                             </ul>
@@ -229,11 +228,11 @@
                         <h3 class="widget_title"> Fanlar  </h3>
                         <div class="menu-all-pages-container footer-menu">
                             <ul class="menu">
-                                <li><a href="about.html"> Ishlab chiqarishni avtomatlashtrish</a></li>
-                                <li><a href="contact.html"> Ishlab chiqarishni avtomatlashtrish</a></li>
-                                <li><a href="blog.html"> Ishlab chiqarishni avtomatlashtrish</a></li>
-                                <li><a href="event-details.html"> Ishlab chiqarishni avtomatlashtrish</a></li>
-                                <li><a href="about.html"> Ishlab chiqarishni avtomatlashtrish</a></li>
+                                {% for direction in directions %}
+                                    {% for science in direction.sciences.all %}
+                                        <li><a href="/direction/{{direction.id}}">{{science.name}}</a></li>
+                                    {% endfor%}
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

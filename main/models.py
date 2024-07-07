@@ -74,3 +74,11 @@ class ProblemImages(models.Model):
         return f'{self.problem.name}'
 
 
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    phone = models.CharField(max_length=13)
+
+    def __str__(self):
+        return self.name
+

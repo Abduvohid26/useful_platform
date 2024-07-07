@@ -1,5 +1,6 @@
 {% extends 'wrap.html' %}
 {% block content %}
+    <!-- Breadcrumb Section -->
     <div class="breadcumb-wrapper " data-bg-src="/static/img/direction.avif">
         <div class="container z-index-common">
             <div class="breadcumb-content">
@@ -7,7 +8,7 @@
                 <p class="breadcumb-text">Search over 200 individual encyclopedias and reference books.</p>
                 <div class="breadcumb-menu-wrap">
                     <ul class="breadcumb-menu">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'main:home' %}">Home</a></li>
                         <li>Ijtimoiy fanlar</li>
                     </ul>
                 </div>
@@ -15,6 +16,7 @@
         </div>
     </div>
 
+    <!-- Main Content Section -->
     <section class="space-top space-extra-bottom">
         <div class="container">
             <div class="title-area text-md-center mb-4 mb-lg-5">
@@ -29,6 +31,7 @@
                 </div>
             </div>
 
+            <!-- Inline CSS for List Items -->
             <style>
                 .list-item {
                     padding: 15px 0px;
@@ -37,6 +40,8 @@
                     font-size: 20px;
                 }
             </style>
+
+            <!-- Sciences and Subjects Section -->
             <div class="overflow-hidden space-extra-bottom mt-5">
                 <div class="container">
                     <div class="row">
@@ -44,12 +49,13 @@
                         <div class="col-lg-12">
                             <div class="accordion-style3 wow fadeInUp" data-wow-delay="0.2s">
                                 <div class="accordion" id="faqVersion1">
+                                    {% if sciences %}
                                     {% for science in sciences %}
                                     <div class="accordion-item active">
                                         <div class="accordion-header" id="headingOne">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ science.name }}</button>
                                         </div>
-                                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#faqVersion1">
+                                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqVersion1">
                                             <div class="accordion-body">
                                                 <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Mavzular </h3>
                                                 <ul>
@@ -61,6 +67,9 @@
                                         </div>
                                     </div>
                                     {% endfor %}
+                                    {% else %}
+                                        <h4>Bu yonalishning fanlari mavjud emas</h4>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

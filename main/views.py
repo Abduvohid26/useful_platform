@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login
-from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems
+from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, Contact
 from django.contrib import messages
-
-# Create your views here.
 
 
 class HomeView(View):
@@ -15,21 +13,22 @@ class HomeView(View):
         context = {'welcome': welcome, 'about_platforms': about_platform, 'directions': direction}
         return render(request, 'index.html', context=context, status=200)
 
+    def post(self, request):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        Contact.objects.create(name=name, phone=phone, email=email)
+        messages.success(request, 'Muvaffaqiyattli Ro\'yxatdan olindi')
+        return redirect('main:home')
+
 
 class DirectionView(View):
     def get(self, request, *args, **kwargs):
         direction = get_object_or_404(Directions, id=self.kwargs['id'])
         sciences = Sciences.objects.filter(directions=direction)
-        context = {'direction': direction, 'sciences': sciences}
+        directions = Directions.objects.all()
+        context = {'direction': direction, 'sciences': sciences, 'directions': directions}
         return render(request, 'direction.html', context=context, status=200)
-
-
-# class SubjectView(View):
-#     def get(self, request, *args, **kwargs):
-#         science_id = self.kwargs['science_id']
-#         science = get_object_or_404(Sciences, id=science_id)
-#         subjects = Subject.objects.filter(sciences=science)
-#         return render(request, 'task.html', context={'science': science, 'subjects': subjects})
 
 
 class TaskView(View):
@@ -37,15 +36,17 @@ class TaskView(View):
         subject_id = self.kwargs['subject_id']
         subject = get_object_or_404(Subject, id=subject_id)
         tasks = Problems.objects.filter(subject=subject)
-        return render(request, 'task.html', context={'subject': subject, 'tasks': tasks})
+        directions = Directions.objects.all()
+        return render(request, 'task.html', context={'subject': subject, 'tasks': tasks,
+                                                     'directions': directions})
 
 
 class TaskDetailView(View):
     def get(self, request, *args, **kwargs):
         task_id = self.kwargs['task_id']
         task = get_object_or_404(Problems, id=task_id)
-        print(task.name)
-        return render(request, 'task_detail.html', context={'task': task})
+        directions = Directions.objects.all()
+        return render(request, 'task_detail.html', context={'task': task, 'directions': directions})
 
 
 class LoginRegisterView(View):
