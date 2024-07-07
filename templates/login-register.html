@@ -1,0 +1,74 @@
+{% extends 'wrap.html' %}
+
+{% block content %}
+<section class="space-top space-extra-bottom">
+    <div class="container">
+        <div class="row gx-60">
+            <div class="col-lg-6">
+                <div class="form-style4 login" data-bg-src="assets/img/bg/course-bg-pattern.jpg">
+                    <h2 class="form-title">LOG IN</h2>
+                    <form action="{% url 'main:login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" autocomplete="off" name="email" id="email" placeholder="Username or email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" autocomplete="off" name="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="row justify-content-between">
+                            <div class="col-auto form-group">
+                                <input type="checkbox" name="rememberlogin" id="rememberlogin">
+                                <label for="rememberlogin">Remember me</label>
+                            </div>
+                            <div class="col-auto form-group">
+                                <a class="forget-link" href="#">FORGET A PASSWORD?</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="vs-btn">Login</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-style4 signup" data-bg-src="assets/img/bg/course-bg-pattern.jpg">
+                    <h2 class="form-title">SIGN UP</h2>
+                    <form method="post" action="{% url 'main:register' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" autocomplete="off" name="signupname" id="signupname" placeholder="Complete Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" autocomplete="off" name="signupemail" id="signupemail" placeholder="Email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" autocomplete="off" name="signupphone" id="signupphone" placeholder="Password">
+                        </div>
+                        <button type="submit" class="vs-btn">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="space-bottom">
+    <div class="container">
+        <div class="cta-style2">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="cta-content">
+                        <p class="cta-text">AWARD WINNING QUALIFIED TUTORS</p>
+                        <h2 class="cta-title h1">Top quality tutors at affordable prices</h2>
+                        <a href="team.html" class="vs-btn style2"><i class="far fa-angle-right"></i>Find a Tutor</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cta-img">
+                        <img src="assets/img/about/about-2-6.jpg" alt="About Img">
+                        <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video position-center"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

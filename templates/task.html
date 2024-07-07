@@ -1,0 +1,50 @@
+{% extends 'wrap.html' %}
+{% block content %}
+<div class="breadcumb-wrapper" data-bg-src="/static/img/direction.avif">
+    <div class="container z-index-common">
+        <div class="breadcumb-content">
+            <h1 class="breadcumb-title">{{ subject.name }}</h1>
+            <p class="breadcumb-text">Search over 200 individual encyclopedias and reference books.</p>
+            <div class="breadcumb-menu-wrap">
+                <ul class="breadcumb-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li>{{ subject.name }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="space-top space-extra-bottom">
+    <div class="container">
+        <div class="title-area text-md-center mb-4 mb-lg-5">
+            <div class="sec-icon"><span class="vs-circle"></span></div>
+            <span class="sec-subtitle">{{ subject.name }}</span>
+            <h2 class="sec-title h1">{{ subject.name }} ga oid masalalar</h2>
+        </div>
+        <div class="row gx-60">
+            <div class="col-xl-12">
+                <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">Masalalar</h3>
+                <div class="row gx-3 pt-2">
+                    <div class="col-md-12">
+                        <div class="vs-list list-style3">
+                            <ul>
+                             {% if tasks %}
+                                {% for task in tasks %}
+                                    <li><a href="/task/{{task.id}}">{{ task.name }}</a></li><!-- using named URL pattern -->
+                                {% endfor %}
+                            {% else %}
+                                <h4>{{ subject.name }} ga oid masalalar mavjud emas</h4>
+                            {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative overflow-hidden rounded-20 mt-5">
+            <img src="/static/img/about/academic-1.jpg" alt="blog video">
+            <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video position-center"><i class="fas fa-play"></i></a>
+        </div>
+    </div>
+</section>
+{% endblock %}

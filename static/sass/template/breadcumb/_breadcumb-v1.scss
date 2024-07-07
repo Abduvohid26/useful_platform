@@ -1,0 +1,135 @@
+.breadcumb-menu {
+  position: relative;
+  margin: 0;
+  padding: 25px 0 25px 0;
+  list-style-type: none;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 99999px;
+    z-index: -1;
+    background-color: $secondary-color;
+    border-radius: 0 7px 7px 0;
+  }
+
+  span,
+  li,
+  a {
+    color: $white-color;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    word-break: break-word;
+    white-space: normal;
+    display: inline-block;
+  }
+
+  a {
+    &:hover {
+      color: $theme-color2;
+    }
+  }
+
+  li {
+    &:not(:last-child):after {
+      content: '/';
+      position: relative;
+      margin-left: 20px;
+      margin-right: 15px;
+    }
+
+    &:first-child {
+      &:before {
+        content: "\f80c";
+        position: relative;
+        margin-right: 5px;
+        font-weight: 700;
+        font-family: $icon-font;
+        margin-right: 9px;
+      }
+    }
+  } 
+}
+
+.breadcumb-menu-wrap {
+  margin: 95px 0 0 0;
+  min-height: 74px;
+  position: relative;
+}
+
+.breadcumb-title {
+  font-size: 70px;
+  color: $white-color;
+  margin: -0.21em 0 -0.4em 0;
+}
+
+.breadcumb-text {
+  font-size: 20px;
+  color: $white-color;
+  margin: 32px 0 -0.25em 0;
+}
+
+.breadcumb-wrapper {
+  padding-top: 160px;
+  padding-bottom: 30px;
+  background-color: $title-color;
+  overflow: hidden;
+
+  @include md {
+    padding-top: 100px;
+    padding-bottom: 30px;
+  }
+}
+
+@include lg {
+  .breadcumb-title {
+    font-size: 48px;
+  }
+
+  .breadcumb-text {
+    font-size: 16px;
+  }
+}
+
+@include md {
+  .breadcumb-title {
+    font-size: 40px;
+    margin: -0.15em 0 -0.4em 0;
+  }
+
+  .breadcumb-text {
+    font-size: 14px;
+  }
+
+  .breadcumb-wrapper {
+    padding-top: 80px;
+  }
+
+  .breadcumb-menu-wrap {
+    margin: 75px 0 0 0;
+  }
+
+}
+
+@include sm {
+  .breadcumb-title {
+    font-size: 36px;
+  }
+
+  .breadcumb-menu {
+    li,
+    a,
+    span {
+      font-size: 14px;
+    }
+
+    li:after {
+      margin-left: 11px;
+      margin-right: 9px;
+    }
+  }
+}

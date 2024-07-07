@@ -1,0 +1,100 @@
+.error-title {
+  font-size: 100px;
+  line-height: 1;
+  margin: -0.33em 0 18px 0;
+}
+
+.error-title2 {
+  font-size: 40px;
+  line-height: 1;
+  margin: 0 0 20px 0;
+}
+
+.error-text {
+  margin: 0 0 30px 0;
+}
+
+.search-inline {
+  position: relative;
+  margin-bottom: 15px;
+
+  input {
+    height: 75px;
+    border: 1px solid #E8E8E8;
+    padding: 0 70px 0 40px;
+    border-radius: 9999px;
+    box-shadow: 0.5px 0.87px 27px 0 rgba(#231F20, 0.04);
+
+    &:focus {
+      box-shadow: 0.5px 0.87px 27px 0 rgba(#231F20, 0.04);
+    }
+  }
+
+  button {
+    border: 2px solid $theme-color;
+    background-color: $white-color;
+    width: 50px;
+    height: 50px;
+    line-height: 47px;
+    font-size: 18px;
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 100%;
+
+    &:hover {
+      background-color: $theme-color;
+      color: $white-color;
+      border-color: $theme-color;
+    }
+  }
+}
+
+
+.vs-error-wrapper {
+  background-color: #fafafa;
+  padding: $space 0 $space 0;
+}
+
+
+@include lg {
+  .error-img {
+    margin-bottom: 50px;
+  }
+}
+
+@include md {
+  .error-img {
+    margin-bottom: 30px;
+  }
+
+  .error-title {
+    font-size: 72px;
+  }
+
+  .error-title2 {
+    font-size: 30px;
+  }
+
+  .vs-error-wrapper {
+    padding: $space-mobile 0 $space-mobile 0;
+  }
+}
+
+@include sm {
+  .error-title {
+    font-size: 60px;
+  }
+
+  .error-title2 {
+    font-size: 26px;
+  }
+
+  .search-inline {
+
+    input {
+      padding-left: 30px;
+    }
+  }
+}

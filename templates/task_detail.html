@@ -1,0 +1,67 @@
+{% extends 'wrap.html' %}
+{% block content %}
+<div class="breadcumb-wrapper" data-bg-src="/static/img/direction.avif">
+    <div class="container z-index-common">
+        <div class="breadcumb-content">
+            <h1 class="breadcumb-title">{{ task.name }}</h1>
+            <p class="breadcumb-text">Detailed view of the task</p>
+            <div class="breadcumb-menu-wrap">
+                <ul class="breadcumb-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li>{{ task.name }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="space-top space-extra-bottom">
+    <div class="container">
+        <div class="title-area text-md-center mb-4 mb-lg-5">
+            <div class="sec-icon"><span class="vs-circle"></span></div>
+            <span class="sec-subtitle">{{ task.name }}</span>
+            <h2 class="sec-title h1">{{ task.name }}</h2>
+        </div>
+        <div class="row gx-60">
+            <div class="col-xl-12">
+                <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">Masalalar</h3>
+
+                <div id="carouselWithIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for i in task.problems.all %}
+                        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true"></li>
+                        {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for task_img in task.problems.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ task_img.image.url }}" style="height: 580px;" class="d-block w-100" alt="Slide {{ forloop.counter }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselWithIndicators" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselWithIndicators" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+                <div class="col-xl-12 mb-4 mt-5  mb-lg-0">
+                    <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Slayd xaqida   </h3>
+                    <p>{{task.body}}</p>
+                </div>
+
+                <div class="col-xl-12 mb-4 mt-5  mb-lg-0">
+                    <h3  class="h4 mb-3 mb-lg-4 pb-lg-2">
+                        <a href="#" class="vs-btn">
+
+                            Bilimlarni sinab ko'rish
+                        </a>
+                    </h3>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

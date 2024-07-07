@@ -1,0 +1,153 @@
+.widget_nav_menu,
+.widget_pages,
+.widget_archive,
+.widget_categories {
+  ul {
+    list-style: none;
+    margin: 0 0 -15px 0;
+    padding: 0;
+  }
+
+  a {
+    display: block;
+    background-color: $white-color;
+    padding: 21px 60px 21px 25px;
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    color: $title-color;
+    border-radius: 16px;
+  }
+
+  li {
+    display: block;
+    position: relative;
+
+    >span {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 500;
+      height: 50px;
+      width: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: $smoke-color;
+      color: $title-color;
+      position: absolute;
+      right: 5px;
+      top: 4px;
+      z-index: 1;
+      border-radius: 16px;
+      transition: all ease 0.4s;
+    }
+
+    &:hover {
+      >span {
+        background-color: $theme-color;
+        color: $white-color;
+      }
+
+      >a {
+        background-color: $theme-color3;
+        color: $white-color;
+      }
+    }
+  }
+
+  .children {
+    margin-left: 10px;
+  }
+}
+
+.widget_meta {
+  ul {
+    margin: 0 0 -10px 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    background-color: $white-color;
+    border-radius: 20px;
+    height: 53px;
+    line-height: 50px;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    transition: all ease 0.4s;
+
+    &:hover {
+      background-color: $theme-color;
+      color: $white-color;
+
+      a {
+        color: $white-color;
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      margin-bottom: 10px;
+      border-bottom: none;
+    }
+  }
+
+  a {
+    font-size: 16px;
+    font-weight: 700;
+    color: $title-color;
+    position: relative;
+
+    &:before {
+      content: '\f0da';
+      font-family: $icon-font;
+      margin-right: 10px;
+    }
+  }
+}
+
+.widget_nav_menu {
+  .sub-menu {
+    margin-left: 10px;
+  }
+}
+
+.wp-block-archives {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+
+  a:not(:hover) {
+    color: inherit;
+  }
+}
+
+.vs-blog ul.wp-block-archives li {
+  margin: 5px 0;
+}
+
+
+
+@include lg {
+
+  .widget_nav_menu,
+  .widget_pages,
+  .widget_archive,
+  .widget_categories {
+    font-size: 14px;
+
+    a {
+      font-size: 14px;
+    }
+
+    li {
+      >span {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+      }
+    }
+  }
+}

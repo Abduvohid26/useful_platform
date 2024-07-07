@@ -1,0 +1,72 @@
+{% extends 'wrap.html' %}
+{% block content %}
+    <div class="breadcumb-wrapper " data-bg-src="/static/img/direction.avif">
+        <div class="container z-index-common">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title"> Ijtimoiy fanlar </h1>
+                <p class="breadcumb-text">Search over 200 individual encyclopedias and reference books.</p>
+                <div class="breadcumb-menu-wrap">
+                    <ul class="breadcumb-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li>Ijtimoiy fanlar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="space-top space-extra-bottom">
+        <div class="container">
+            <div class="title-area text-md-center mb-4 mb-lg-5">
+                <div class="sec-icon"><span class="vs-circle"></span></div>
+                <span class="sec-subtitle"> Yo'nalish xaqida  </span>
+                <h2 class="sec-title h1">  Ijtimoiy fanlar  </h2>
+            </div>
+            <div class="row gx-60">
+                <div class="col-xl-12 mb-4 mb-lg-0">
+                    <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Yo'nalish xaqida </h3>
+                    <p>{{ direction.body }}</p>
+                </div>
+            </div>
+
+            <style>
+                .list-item {
+                    padding: 15px 0px;
+                    border-radius: 10px;
+                    border: 1px solid rgb(252, 248, 248);
+                    font-size: 20px;
+                }
+            </style>
+            <div class="overflow-hidden space-extra-bottom mt-5">
+                <div class="container">
+                    <div class="row">
+                        <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Yo'nalish Fanlari </h3>
+                        <div class="col-lg-12">
+                            <div class="accordion-style3 wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="accordion" id="faqVersion1">
+                                    {% for science in sciences %}
+                                    <div class="accordion-item active">
+                                        <div class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ science.name }}</button>
+                                        </div>
+                                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#faqVersion1">
+                                            <div class="accordion-body">
+                                                <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Mavzular </h3>
+                                                <ul>
+                                                    {% for subject in science.subject.all %}
+                                                    <li class="list-item"><a href="/subject/tasks/{{subject.id}}/">{{ subject.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

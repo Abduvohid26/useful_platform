@@ -1,0 +1,73 @@
+.call-number1 {
+  text-decoration: underline;
+  text-decoration-color: $theme-color;
+
+  &:hover {
+    color: $theme-color;
+    text-decoration: underline;
+  }
+}
+
+.contact-style1 {
+  padding: 40px 30px;
+  background-color: $theme-color;
+  border-radius: 20px;
+
+  .contact-text {
+    color: $white-color;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .contact-number {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    i {
+      margin-right: 5px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.contact-info {
+  position: relative;
+  margin: 0 0 7px 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 0 0 50px;
+  max-width: 500px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  i {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: var(--theme-color);
+    color: var(--white-color);
+    position: absolute;
+    left: 0;
+    top: 48%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: all ease 0.4s;
+  }
+
+  &:hover {
+    i {
+      background-color: $theme-color2;
+      color: $title-color;
+    }
+  }
+}

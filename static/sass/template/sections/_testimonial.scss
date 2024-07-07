@@ -1,0 +1,205 @@
+.about-testimonial {
+	padding-top: 60px;
+}
+
+.testi-style1 {
+	background-color: $secondary-color;
+	border-radius: 20px;
+	margin-bottom: 30px;
+	padding: 10px;
+	position: relative;
+	border: 4px solid transparent;
+	transition: all ease 0.4s;
+
+	.testi-content {
+		padding: 40px 40px 60px;
+	}
+
+	.testi-text {
+		font-size: 20px;
+		color: $white-color;
+	}
+
+	.testi-client {
+		background-color: $white-color;
+		border-radius: 20px;
+		padding: 50px 40px 25px;
+		position: relative;
+
+		img {
+			position: absolute;
+			top: -38px;
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			border: 4px solid $white-color;
+		}
+	}
+
+	.testi-name {
+		margin-bottom: 0;
+	}
+
+	.testi-degi {
+		font-size: 14px;
+	}
+
+	.testi-rating {
+		color: #F6B800;
+		float: right;
+		font-size: 14px;
+
+		i {
+			margin-left: 3px;
+		}
+	}
+
+	&:before {
+		content: "";
+		position: absolute;
+		right: 56px;
+		bottom: -30px;
+		width: 56px;
+		height: 56px;
+		background-color: inherit;
+		transform: rotate(45deg);
+		border-style: solid;
+		border-color: transparent;
+		border-width: 0 3px 3px 0;
+		transition: all ease 0.4s;
+	}
+
+	&:hover {
+		&,
+		&:before {
+			border-color: $theme-color2;
+		}
+	}
+}
+
+.testi-style2 {
+	position: relative;
+	text-align: center;
+	padding: 50px 60px;
+	width: 640px;
+	height: 640px;
+	margin-bottom: 20px;
+	transition: all ease .4s;
+	border-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: $white-color;
+	border: 2px solid $theme-color;
+	box-shadow: 23.34px 8px 24px rgba(#231F20, .09);
+
+	.testi-shape1 {
+		position: absolute;
+		left: -42px;
+		bottom: 215px;
+		width: 134px;
+		height: 53px;
+		z-index: -1;
+		background-color: $theme-color;
+		opacity: 0.75;
+		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+	}
+
+	.slick-dots {
+		margin: 20px 0 0 0;
+	}
+
+	.testi-text {
+		font-size: 26px;
+		margin-bottom: 25px;
+		margin-top: 40px;
+	}
+
+	.testi-name {
+		margin-bottom: 0;
+	}
+
+	.testi-degi {
+		color: $title-color;
+		margin-bottom: 0;
+	}
+}
+
+
+@include xl {
+	.testi-style1 {
+		.testi-client {
+			padding-right: 20px;
+		}
+	}
+}
+
+@include ml {
+	.testi-style2 {
+		width: 100%;
+		height: auto;
+		border-radius: 20px;
+		
+		.testi-shape1 {
+			display: none;
+		}
+
+		.testi-text {
+			font-size: 20px;
+			margin-bottom: 15px;
+			margin-top: 20px;
+		}
+
+		.testi-name {
+			font-size: 22px;
+			margin-bottom: 10px;
+		}
+
+		.testi-degi {
+			font-size: 14px;
+		}
+	}
+}
+
+@include md {
+	.testi-style1 {
+		.testi-content {
+			padding: 25px 20px 40px;
+		}
+
+		.testi-text {
+			font-size: 18px;
+		}
+
+		.testi-client {
+			padding: 50px 20px 25px;
+		}
+
+		.testi-rating {
+			float: none;
+		}
+	}
+}
+
+@include sm {
+	.testi-style1 {
+		&:before {
+			bottom: -27px;
+		}
+	}
+
+	.testi-style2 {
+		padding: 40px 20px;
+
+		.testi-text {
+			font-size: 16px;
+			margin-bottom: 15px;
+			margin-top: 15px;
+		}
+
+		.testi-name {
+			font-size: 20px;
+			margin-bottom: 5px;
+		}
+	}
+}

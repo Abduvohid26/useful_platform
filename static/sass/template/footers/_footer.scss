@@ -1,0 +1,241 @@
+.widget-area {
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.copyright-wrap {
+  background-color: #150F2B;
+  text-align: center;
+  padding: 26px 0;
+  position: relative;
+  z-index: 2;
+}
+
+
+.copyright-text {
+  color: $smoke-color;
+  font-size: 16px;
+  margin: 0;
+
+  a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+
+    &:hover {
+      color: $theme-color2;
+    }
+  }
+}
+
+.footer-info {
+  position: relative;
+  margin: 0 0 13px 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0 0 0 50px;
+  max-width: 300px;
+  font-weight: 500;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  i {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: $theme-color;
+    color: $white-color;
+    position: absolute;
+    left: 0;
+    top: 48%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: all ease 0.4s;
+  }
+
+  .text-inherit {
+    &:hover {
+      color: $theme-color2;
+    }
+  }
+
+  &:hover {
+    i {
+      background-color: $theme-color3;
+    }
+  }
+}
+
+.footer-layout1 {
+  background-color: $secondary-color;
+  --title-color: #fff;
+  --body-color: #C7C7C7;
+  overflow: hidden;
+}
+
+.footer-layout2 {
+  --body-color: #fff;
+  --title-color: #fff;
+
+  .copyright-wrap {
+    background-color: #040011;
+  }
+}
+
+.footer-layout3 {
+  overflow: hidden;
+
+  .vs-widget-about {
+    padding-right: 65px;
+  }
+
+  .widget_title {
+    margin: 0 0 25px 0;
+  }
+
+  .mailchimp-text {
+    margin-bottom: 20px;
+    padding-right: 20px;
+  }
+
+  .copyright-wrap {
+    background-color: #F1F1F1;
+  }
+
+  .copyright-text {
+    color: $title-color;
+  }
+
+  .footer-info a:hover,
+  .copyright-text a:hover {
+    color: $theme-color;
+
+  }
+
+  .social-style1 {
+    i {
+      color: $title-color;
+      border-color: #777777;
+      box-shadow: -23.34px 8px 24px rgba(#231F20, .09);
+    }
+
+    a {
+      color: $title-color;
+
+      &:hover {
+        color: $theme-color;
+
+        i {
+          color: $white-color;
+        }
+      }
+    }
+  }
+}
+
+.footer-shape1 {
+  position: relative;
+
+  img {
+    bottom: 0;
+    position: absolute;
+    left: -270px;
+    z-index: 1;
+  }
+}
+
+.footer-campus {
+  position: relative;
+
+  .campus-img {
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 20px;
+  }
+
+  .campus-address {
+    position: relative;
+    padding: 0 0 0 25px;
+    color: #E2E2E2;
+    margin: 0;
+
+    i {
+      color: $white-color;
+      font-size: 17px;
+      margin-right: 10px;
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+  }
+}
+
+.footer-media {
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  .media-icon {
+    background-color: $theme-color;
+    border-radius: 50%;
+    color: $white-color;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 15px;
+    text-align: center;
+    width: 50px;
+  }
+
+  .media-title {
+    color: $white-color;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+  }
+
+  a {
+    color: $white-color;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+
+    &:hover {
+      color: $theme-color2;
+    }
+  }
+}
+
+@media (max-width: 1550px) {
+  .footer-shape1 {
+    img {
+      display: none;
+    }
+  }
+}
+
+@include lg {
+  .footer-layout3 {
+
+    .vs-widget-about,
+    .mailchimp-text {
+      padding-right: 0;
+    }
+  }
+}
+
+@include md {
+  .copyright-text {
+    font-size: 14px;
+  }
+
+  .widget-area {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+}

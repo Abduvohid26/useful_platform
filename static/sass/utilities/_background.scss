@@ -1,0 +1,22 @@
+@each $bgcolorMap, $value in $bgcolorMap {
+  .bg-#{$bgcolorMap} {
+    background-color: #{$value} !important;
+  }
+}
+
+.background-image,
+[data-bg-src] {
+  @include background-content(no-repeat, cover, center center);
+}
+
+.bg-fluid {
+  @include background-content(no-repeat, 100% 100%, center center);
+}
+
+.bgc-f3 {
+  background-color: $smoke-color;
+}
+
+.bgc-f6 {
+  background-color: #f6f6f6;
+}

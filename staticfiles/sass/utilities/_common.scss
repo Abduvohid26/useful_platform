@@ -1,0 +1,341 @@
+.vs-circle {
+  display: block;
+  width: var(--circle-size, 600px);
+  height: var(--circle-size, 600px);
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  background-size: 100% 100%;
+  background-image: linear-gradient(
+    var(--circle-angle, -60deg), 
+    var(--circle-bg, #2F2552) var(--circle-count, 55%), 
+    transparent var(--circle-count, 55%)
+  );
+
+  &.color2 {
+    --circle-bg: #{$theme-color2};
+  }
+}
+
+// .fa,
+// .far,
+// .fas,
+// .fal {
+//   &,
+//   &:before {
+//     font-family: "Font Awesome 5 Pro" !important;
+//   }
+// }
+
+.vs-border-circle {
+  width: var(--circle-size, 400px);
+  height: var(--circle-size, 400px);
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  border: var(--border-size, 45px) solid $theme-color2;
+}
+
+.svg-hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.vs-polygon1 {
+  width: 35px;
+  height: 30px;
+  background-color: $secondary-color;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  opacity: 0.7;
+}
+
+.vs-rounded1 {
+  width: 35px;
+  height: 35px;
+  border: 4px solid $secondary-color;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+
+.shape-dotted {
+  width: 83px;
+  height: 176px;
+  background: radial-gradient(circle, transparent 20%, var(--dot-bg, #fff) 20%, var(--dot-bg, #fff) 80%, transparent), radial-gradient(circle, transparent 20%, var(--dot-bg, #fff) 20%, var(--dot-bg, #fff) 0%, var(--dot-color, #707070)) var(--dot-size, 5.8px) var(--dot-size, 5.8px);
+  background-color: var(--dot-bg, #fff);
+  background-size: calc(var(--dot-size, 5.8px)*2) calc(var(--dot-size, 5.8px)*2);
+  z-index: -1;
+
+  &.style2 {
+    --dot-bg: #f6f6f6;
+  }
+}
+
+.available-badge {
+  color: $body-color;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  margin-left: 30px;
+  padding-left: 25px;
+  position: relative;
+
+  &:before {
+    background-color: #82FF57;
+    border-radius: 50%;
+    bottom: 5px;
+    content: "";
+    height: 16px;
+    left: 0;
+    position: absolute;
+    width: 16px;
+  }
+}
+
+.social-style1 {
+  a {
+    color: $white-color;
+    display: inline-block;
+    margin-right: 30px;
+    transition: all ease 0.4s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      color: $theme-color2;
+
+      i {
+        background-color: $theme-color;
+        border-color: transparent;
+      }
+    }
+  }
+
+  i {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    color: $white-color;
+    text-align: center;
+    border: 1px solid #C1C1C1;
+    border-radius: 50%;
+    transition: all ease 0.4s;
+  }
+}
+
+.social-style2 {
+  margin-top: 25px;
+
+  i {
+    background-color: $white-color;
+    border: 1px solid #C1C1C1;
+    border-radius: 50%;
+    color: $body-color;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    width: 52px;
+    transition: all ease .4s;
+
+    &:hover {
+      background-color: $theme-color;
+      color: $white-color;
+    }
+  }
+}
+
+
+.image-scale-hover {
+  overflow: hidden;
+
+  img {
+    transition: all ease 0.4s;
+    transform: scale(1.001);
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.shape-mockup-wrap {
+  position: relative;
+
+  .container-fluid,
+  .container {
+    z-index: 1;
+    position: relative;
+  }
+}
+
+.shape-mockup {
+  position: absolute;
+  z-index: 1;
+}
+
+.z-index-step1 {
+  position: relative;
+  z-index: 4 !important;
+}
+
+.z-index-common {
+  position: relative;
+  z-index: 3;
+}
+
+.z-index-n1 {
+  z-index: -1;
+}
+
+.vs-media {
+  display: flex;
+}
+
+.media-body {
+  flex: 1;
+}
+
+.rounded-20,
+.bdrs20 {
+  border-radius: 20px;
+}
+
+.badge {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline-block;
+  text-align: center;
+  background-color: $theme-color;
+  color: $white-color;
+  padding: .35em .55em;
+  border-radius: 50%;
+}
+
+.new-label {
+  font-size: 12px;
+  background-color: $theme-color2;
+  color: $white-color;
+  line-height: 1;
+  padding: 5px 5px 3px 5px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  position: relative;
+  top: -1px;
+  font-weight: 500;
+  margin-left: 5px;
+  animation: newlabel infinite 0.4s;
+}
+
+.mega-hover {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    transition: all 2s ease;
+    transform: scale(1);
+  }
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 3;
+    transform: rotate(5deg);
+  }
+
+  &:before {
+    top: -10%;
+    right: 51%;
+    bottom: -10%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &:after {
+    top: 50%;
+    right: -10%;
+    bottom: 50%;
+    left: -10%;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+
+  &:hover {
+    &:before {
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transition: all 900ms linear;
+    }
+
+    &:after {
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+      transition: all 900ms linear;
+    }
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.guarant-badge {
+  font-size: 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 12px 30px;
+  color: $body-color;
+  background-color: $theme-color2;
+  display: block;  
+}
+
+.img-shadow1 {
+  box-shadow: 0.34px 0.94px 68px rgba(#231F20, .1);
+}
+
+@keyframes newlabel {
+  0% {
+    background-color: $theme-color;
+  }
+
+  50% {
+    background-color: $theme-color2;
+  }
+
+  100% {
+    background-color: $theme-color;
+  }
+}
+
+@media (min-width: $xl) {
+  .d-xxxl-block {
+    display: block !important;
+  }
+}
+
+@media (min-width: $hd) {
+  .d-hd-none {
+    display: none !important;
+  }
+}
+
+
+@include sm {
+  .guarant-badge {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+}

@@ -1,0 +1,424 @@
+.form-style1 {
+  margin-bottom: 35px;
+  max-width: 700px;
+
+  .form-title {
+    margin: -0.23em 0 24px 0;
+  }
+
+  .form-inner {
+    position: relative;
+  }
+
+  input {
+    border: 1px solid rgba(#999999, 0.2);
+    border-radius: 40px;
+    height: 80px;
+    padding-left: 45px;
+    font-size: 16px;
+
+    @include inputPlaceholder {
+      color: #474747;
+    }
+  }
+
+  input[type="radio"] {
+    ~label {
+      font-size: 18px;
+
+      &::before {
+        border: 4px solid #C7C7C7;
+      }
+    }
+
+    &:hover,
+    &:checked {
+      ~label {
+        color: $theme-color;
+      }
+    }
+
+    &:checked {
+      ~label {
+        &::before {
+          border-color: $theme-color;
+          background-color: $theme-color;
+        }
+      }
+    }
+  }
+
+  .icon-btn {
+    --btn-size: 68px;
+    --btn-font-size: 24px;
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    border: none;
+    background-color: $theme-color;
+    color: $white-color;
+
+    &:hover {
+      background-color: $theme-color2;
+      color: $white-color;
+    }
+  }
+
+}
+
+.form-style2 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+  
+  .form-inner {
+    background-color: $white-color;
+    border-radius: 20px;
+    border: 5px solid #EAEAEA;
+    padding: 50px 50px 60px;
+  }
+
+  .vs-circle {
+    position: absolute;
+    right: -60px;
+    bottom: -60px;
+    max-width: initial;
+    max-height: initial;
+    z-index: -1;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-title {
+    font-weight: 400;
+    line-height: 40px;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }  
+
+  select,
+  input {
+    border: none;
+    border: 1px solid #D1D1D1;
+    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    height: 60px;
+    border-radius: 9999px;
+    padding-right: 20px;
+    --body-color: #333333;
+    transition: all ease 0.4s;
+
+    &:focus {
+      border-color: $theme-color;
+    }
+  }
+
+  .vs-btn {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+  }
+
+  .form-link {
+    color: $title-color;
+    font-weight: 700;
+    text-decoration: underline;
+
+    &:hover {
+      color: $theme-color;
+    }
+  }
+}
+
+.form-style3 {
+  --bs-gutter-x: 20px;
+  padding: 40px 50px;
+  border: 3px solid #EAEAEA;
+  background-color: $white-color;
+  border-radius: 20px;
+
+  select,
+  input {
+    border-color: $border-color;
+    height: 60px;
+    transition: all ease 0.4s;
+    border-radius: 999px;
+
+    &:focus {
+      border-color: $theme-color;
+    }
+  }
+
+  .vs-btn {
+    width: 100%;
+  }
+}
+
+.form-style4 {
+  margin-bottom: 30px;
+  padding: 70px 60px;
+  border-radius: 20px;
+  
+  .form-title {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  input {
+    border-radius: 14px;
+    font-size: 16px;
+    height: 60px;
+    padding-right: 20px;
+    padding-left: 30px;
+  }
+
+  a {
+    color: #254389;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  input[type=checkbox] {
+    ~ label {
+      margin: 0;
+      font-weight: 500;
+
+      &::before {
+        top: 2.5px;
+      }
+    }
+  }
+}
+
+.form-style5 {
+  position: relative;
+  background-color: $white-color;
+  border-radius: 20px;
+  border: 5px solid #EAEAEA;
+  padding: 50px;
+  margin-bottom: 30px;
+  
+  .vs-circle {
+    --circle-bg: #{$theme-color2};
+    max-height: initial;
+    max-width: initial;
+    position: absolute;
+    right: -50px;
+    bottom: -50px;
+    z-index: -1;
+  }
+
+  .form-title {
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 20px;
+    margin-top: -0.15em;
+  }
+
+  .form-text {
+    color: $body-color;
+    font-size: 18px;
+    margin-bottom: 27px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .vs-btn {
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
+  .form-text2 {
+    margin-bottom: 10px;
+  }
+
+  input,
+  select,
+  textarea {
+    border-radius: 20px;
+    height: 65px;
+    padding-left: 30px;
+    transition: all ease 0.4s;
+    padding-right: 20px;
+
+    &:focus {
+      border-color: $theme-color;
+    }
+  }
+
+  textarea {
+    min-height: 150px;
+    margin-bottom: 0;
+  }
+
+  input[type=radio] {
+    ~label {
+      &::before {
+        border: 1px solid #C1C1C1;
+      }
+    }
+
+    &:checked {
+      ~label {
+        &::before {
+          background-color: $white-color;
+          border-color: $theme-color;
+          border-width: 6px;
+        }
+      }
+    }
+  }
+}
+
+@include xl {
+  .form-style2 {
+    .vs-circle {
+      right: -40px;
+      bottom: -40px;
+    }
+  }
+}
+
+
+@include ml {
+  .form-style2 {
+    .vs-circle {
+      display: none;
+    }
+
+    .form-inner {
+      padding: 40px 30px 40px;
+    }
+  }
+}
+
+@include lg {
+  .form-style3 {
+    padding: 30px 25px;
+  }
+
+  .form-style1 {
+    max-width: 100%;
+    margin-bottom: 10px;
+    
+    .row {
+      justify-content: center;
+    }
+  }
+
+  .form-style4 {
+    padding: 50px 30px;
+
+    .form-title {
+      font-size: 36px;
+    }
+  }
+
+  .form-style5 {
+    padding: 40px 30px;
+
+    .vs-circle {
+      right: -20px;
+      bottom: -20px;
+      --circle-size: 500px;
+    }
+
+    .form-title {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .form-text {
+      font-size: 16px;
+    }
+  }
+
+}
+
+@include md {
+  .form-style1 {
+    .form-group {
+      padding-left: 15px;
+
+      &:first-child {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+}
+
+@include sm {
+  .form-style2 {
+    .form-inner {
+      padding: 25px 20px 40px;
+    }
+
+    .form-title {
+      line-height: 30px;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+  }
+
+  .form-style3 {
+    padding: 30px 15px;
+  }
+
+  .form-style1 {
+    .form-title {
+      margin: -0.23em 0 18px 0;
+      font-size: 28px;
+    }
+
+    .row .form-group {
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 0 0 0 25px;
+      font-size: 14px;
+      height: 60px;
+    }
+
+    .form-inner {
+      margin-top: 10px;
+    }
+
+    input[type=radio]~label {
+      font-size: 16px;
+    }
+
+    .icon-btn {
+      --btn-size: 48px;
+      --btn-font-size: 18px;
+    }
+  }
+
+  .form-style5 {
+    padding: 50px 20px;
+
+    .form-title {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .form-style4 {
+    padding: 40px 15px;
+
+    .form-title {
+      font-size: 30px;
+    }
+  }
+}

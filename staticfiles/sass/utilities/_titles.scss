@@ -1,0 +1,138 @@
+.sec-title {
+  font-size: 60px;
+  margin: -0.2em 0 0 0;
+}
+
+.sec-title2 {
+  font-size: 70px;
+  margin: -0.2em 0 5px 0;
+}
+
+.sec-subtitle {
+  display: block;
+  color: $title-color;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin: -0.2em 0 15px 0;
+  text-transform: uppercase;
+}
+
+.sec-subtitle2 {
+  font-size: 24px;
+  margin-bottom: 60px;
+  display: block;
+  color: $title-color;
+  text-transform: capitalize;
+}
+
+.sec-subtitle3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: $theme-color;
+  font-size: 20px;
+  font-weight: 700;
+  color: $title-color;
+  display: block;
+  text-transform: uppercase;
+  line-height: 1;  
+  margin-bottom: 10px;
+}
+
+.title-area {
+  margin-bottom: calc(var(--section-title-space) - 20px);
+}
+
+.title-area2 {
+  margin-bottom: var(--section-title-space);
+}
+
+.sec-icon {
+  margin: -0.3em 0 25px 0;
+  
+  .vs-circle {
+    --circle-size: 45px;
+    --circle-angle: -405deg;
+    --circle-bg: #{$theme-color};
+    display: inline-block;
+  }
+}
+
+.sec-btns {
+  margin-bottom: var(--section-title-space);
+}
+
+.border-title {
+  margin: 0 0 30px 0;
+  text-decoration: underline;
+  text-decoration-color: $theme-color2;
+  text-underline-offset: 4px;
+}
+
+.border-title2 {
+  padding: 0 0 5px 0;
+  margin: 0 0 40px 0;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 1px;
+    background-color: $theme-color;
+  }
+}
+
+
+.sec-line2 {
+  height: 100%;
+  width: 1px;
+  background-color: rgba(#7F7F7F, 0.3);
+}
+
+@include ml {
+  .sec-title2,
+  .sec-title {
+    font-size: 48px;
+  }
+}
+
+@include lg {
+  .sec-title2,
+  .sec-title {
+    font-size: 42px;
+  }
+
+  .sec-subtitle {
+    margin: -0.2em 0 15px 0;
+  }
+
+  .sec-icon {
+    margin: -0.3em 0 15px 0;
+  }
+}
+
+@include md {
+  .sec-title2,
+  .sec-title{
+    font-size: 36px;
+  }
+}
+
+@include sm {
+  .sec-title2,
+  .sec-title {
+    font-size: 30px;
+  }
+
+  .sec-subtitle {
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+
+  .border-title2 {
+    margin: 0 0 30px 0;
+  }
+}

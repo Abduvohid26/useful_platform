@@ -1,0 +1,210 @@
+.vs-pagination {
+  text-align: center;
+  margin: 40px auto 30px auto;
+  padding: 15px 0;
+  width: max-content;
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 35px;
+    left: 35px;
+    z-index: -1;
+    border-radius: 20px;
+    background-color: $smoke-color;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 3px;
+    list-style-type: none;
+  }
+
+  a {
+    display: inline-block;
+    border: none;
+    vertical-align: middle;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 500;
+    height: var(--icon-size, 58px);
+    width: var(--icon-size, 58px);
+    line-height: var(--icon-size, 58px);
+    text-align: center;
+    background-color: $white-color;
+    color: $title-color;
+    font-family: $body-font;
+    z-index: 1;
+    border-radius: 20px;
+
+    &:hover {
+      color: $white-color;
+      background-color: $theme-color;
+    }
+  }
+
+
+  .next,
+  .prev {
+    a {
+      display: block;
+      width: auto;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 30px;
+      background-color: $theme-color3;
+      color: $white-color;
+      border-radius: 28px;
+
+      &:hover {
+        background-color: $theme-color2;
+      }
+    }
+  }
+}
+
+.post-pagination {
+  margin: 30px 0 50px;
+}
+
+.post-pagi-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 29px 25px;
+  border: 2px solid transparent;
+  background-color: $smoke-color;
+  border-radius: 20px;
+  transition: all ease 0.4s;
+
+  &.next {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  > a {
+    background-color: $white-color;
+    color: $title-color;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    line-height: 52px;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .pagi-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $title-color;
+    line-height: 26px;
+    margin: 0;
+    flex: 1;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &:hover {
+    background-color: $white-color;
+    border-color: $theme-color;
+    box-shadow: 8.55px 23.49px 24px rgba(35, 31, 32, 0.09);
+
+    >a {
+      color: $white-color;
+      background-color: $theme-color;
+
+      &:hover {
+        background-color: $theme-color2;
+        color: $white-color;
+      }
+    }
+
+    .pagi-title {
+      a {
+        &:hover {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+}
+
+@include ml {
+  .post-pagination {
+    margin: 40px 0;
+  }
+
+  .post-pagi-box {
+    padding: 20px 15px;
+    border-radius: 10px;
+
+    .pagi-title {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    >a {
+      height: 40px;
+      width: 40px;
+      line-height: 42px;
+    }
+  }
+}
+
+@include md {
+  .vs-pagination {
+    a {
+      --icon-size: 40px;
+      font-size: 12px;
+    }
+  }
+}
+
+@include sm {
+  .post-pagi-box {
+    display: block;
+    padding: 20px 15px;
+    text-align: center;
+
+    a {
+      margin-bottom: 10px;
+    }
+
+    &.next {
+      text-align: center;
+    }
+    
+    .pagi-title {
+      font-size: 14px;
+    }
+  }
+}
+
+@include xs {
+  .vs-pagination {
+    a {
+      --icon-size: 30px;
+      font-size: 10px;
+    }
+    
+    .next,
+    .prev {
+      a {
+        font-size: 12px;
+        padding: 0 10px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

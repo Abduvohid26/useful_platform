@@ -1,0 +1,95 @@
+
+.program-style2 {
+	position: relative;
+	padding: 50px 50px 50px 50px;
+	border-top: 2px solid $white-color;
+	border-bottom: 2px solid $white-color;
+	background-color: $white-color;
+	margin-bottom: 30px;
+	transition: all ease 0.4s;
+
+	.program-icon {
+		margin-bottom: 37px;
+	}
+
+	.program-text {
+		margin-bottom: 25px;
+	}
+
+	.program-link {
+		color: $title-color;
+		font-weight: 700;
+		position: relative;
+		text-decoration: underline;
+		text-decoration-color: #CCCCCC;
+		text-decoration-thickness: 2px;
+		transition: all ease 0.4s;
+
+		i {
+			color: #424242;
+			text-align: center;
+			height: 26px;
+			width: 26px;
+			line-height: 26px;
+			margin-left: 10px;
+			font-size: 12px;
+			border-radius: 50%;
+			border: 1px solid #949494;
+			transition: all ease 0.4s;
+		}
+
+		&:hover {
+			color: $theme-color;
+			text-decoration-color: $theme-color;
+
+			i {
+				border-color: $theme-color;
+				background-color: $theme-color;
+				color: $white-color;
+			}
+		}
+	}
+
+	&:hover {
+		border-top-color: $theme-color;
+		border-bottom-color: $theme-color;
+	}
+}
+
+.program-slider1 {
+	
+}
+
+@include md {
+	.program-style2 {
+		padding: 40px 30px 5px 30px;
+
+		.program-icon {
+			margin-bottom: 30px;
+		}
+
+		.program-title {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		.program-text {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+@include sm {
+	.program-style2 {
+		padding: 40px 15px 5px 15px;
+		text-align: center;
+
+		.program-icon {
+			margin-bottom: 25px;
+		}
+
+		.program-text {
+			font-size: 14px;
+		}
+	}
+}
