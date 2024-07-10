@@ -1,11 +1,11 @@
 {% extends 'wrap.html' %}
 {% block content %}
-<div style="" class="quiz-container">
+<div style="margin-top: 50px; margin-bottom: 50px; padding: 30px ;" class="quiz-container">
   <div class="quiz-header">
 <!--    <h2>You answered {{ result.score }} out of {{ result.category.quiz_count }} questions correctly</h2>-->
     <h5>Tog'ri javoblar soni -> {{result.score}}</h5>
     <h5>Noto'g'ri javoblar soni -> {{result.fail}}</h5>
-    <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Back</button>
+    <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Orqaga</button>
   </div>
 
   <div class="quiz-results">
