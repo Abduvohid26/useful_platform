@@ -82,3 +82,69 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
+
+class Category(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='category')
+    title = models.CharField(max_length=255)
+    duration = models.DurationField(blank=True)
+    quiz_count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+
+class Question(models.Model):
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, related_name='questions')
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to="images", blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        obj = super().save(*args, **kwargs)
+        if self.id is None:
+            self.category.quiz_count += 1
+            self.category.save()
+
+    def delete(self, *args, **kwargs):
+        obj = super().delete(*args, **kwargs)
+        self.category.quiz_count -= 1
+        self.category.save()
+
+
+class Variant(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='variants')
+    title = models.CharField(max_length=255)
+    is_true = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+class Result(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    start_date = models.DateTimeField(auto_now_add=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+    score = models.PositiveIntegerField(default=0)
+    success = models.PositiveIntegerField(default=0)
+    fail = models.PositiveIntegerField(default=0)
+    end = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.success} {self.fail}'
+
+    def user_info(self):
+        return f"{self.user.username} {self.user.last_name}"
+
+
+class QuestionResult(models.Model):
+    result = models.ForeignKey(Result, on_delete=models.CASCADE, related_name='question_results')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    correct_variant = models.ForeignKey(Variant, on_delete=models.CASCADE, related_name='correct_answers')
+    selected_variant = models.ForeignKey(Variant, on_delete=models.CASCADE, related_name='selected_answers')
+    is_correct = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Result for {self.result.user.username} in {self.question.title}"

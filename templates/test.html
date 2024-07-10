@@ -1,0 +1,76 @@
+{% extends 'wrap.html' %}
+
+{% block content %}
+<div class="quiz-container" id="quiz">
+  <form method="post" class="quiz-form">
+    {% csrf_token %}
+    <div class="quiz-header">
+      {% for question in questions %}
+      <h2>{{ question.title }}</h2>
+      {% if question.image %}
+      <img src="{{ question.image.url }}" alt="{{ question.title }}" class="question-image">
+      {% endif %}
+      <ul>
+        {% for variant in question.variants.all %}
+        <li>
+          <input type="radio" name="question_{{ question.id }}" id="variant_{{ variant.id }}" value="{{ variant.id }}" class="answer">
+          <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+    <button type="submit" id="submit" class="submit-button">Submit</button>
+  </form>
+</div>
+
+<style>
+  .quiz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+  }
+
+  .quiz-form {
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .quiz-header {
+    margin-bottom: 20px;
+  }
+
+  .question-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+{% endblock %}

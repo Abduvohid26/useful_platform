@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login
-from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, Contact
+from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, Contact, Variant, Question, \
+    Category, Result, QuestionResult
 from django.contrib import messages
+from django.utils import timezone
 
 
 class HomeView(View):
@@ -46,7 +48,9 @@ class TaskDetailView(View):
         task_id = self.kwargs['task_id']
         task = get_object_or_404(Problems, id=task_id)
         directions = Directions.objects.all()
-        return render(request, 'task_detail.html', context={'task': task, 'directions': directions})
+        categories = Category.objects.filter(subject=task.subject)
+        context = {'task': task, 'directions': directions, 'categories': categories}
+        return render(request, 'task_detail.html', context=context)
 
 
 class LoginRegisterView(View):
@@ -96,3 +100,47 @@ class RegisterView(View):
         return redirect('main:login-register')
 
 
+class QuizView(View):
+    def get(self, request, category_id):
+        category = get_object_or_404(Category, id=category_id)
+        questions = Question.objects.filter(category=category).prefetch_related('variants')
+        return render(request, 'test.html', {'category': category, 'questions': questions})
+
+    def post(self, request, category_id):
+        category = get_object_or_404(Category, id=category_id)
+        questions = Question.objects.filter(category=category)
+        result = Result.objects.create(
+            category=category,
+            user=request.user,
+            score=0
+        )
+
+        for question in questions:
+            selected_variant_id = request.POST.get(f'question_{question.id}')
+            if selected_variant_id:
+                selected_variant = get_object_or_404(Variant, id=selected_variant_id)
+                correct_variant = question.variants.get(is_true=True)
+                is_correct = selected_variant == correct_variant
+
+                QuestionResult.objects.create(
+                    result=result,
+                    question=question,
+                    correct_variant=correct_variant,
+                    selected_variant=selected_variant,
+                    is_correct=is_correct
+                )
+
+                if is_correct:
+                    result.score += 1
+                else:
+                    result.fail += 1
+
+        result.save()
+
+        return redirect('main:result', result_id=result.id)
+
+
+class ResultView(View):
+    def get(self, request, result_id):
+        result = get_object_or_404(Result, id=result_id)
+        return render(request, 'test_result.html', {'result': result})

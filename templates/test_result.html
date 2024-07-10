@@ -1,0 +1,91 @@
+{% extends 'wrap.html' %}
+{% block content %}
+<div style="" class="quiz-container">
+  <div class="quiz-header">
+<!--    <h2>You answered {{ result.score }} out of {{ result.category.quiz_count }} questions correctly</h2>-->
+    <h5>Tog'ri javoblar soni -> {{result.score}}</h5>
+    <h5>Noto'g'ri javoblar soni -> {{result.fail}}</h5>
+    <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Back</button>
+  </div>
+
+  <div class="quiz-results">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Correct Answer</th>
+          <th>Your Answer</th>
+          <th>Boolean</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for question_result in result.question_results.all %}
+        <tr>
+          <td>{{ question_result.question.title }}</td>
+          <td>{{ question_result.correct_variant.title }}</td>
+          <td>{{ question_result.selected_variant.title }}</td>
+           <td style="color: {% if question_result.is_correct %}green{% else %}red{% endif %};">
+           {% if question_result.is_correct %}✓{% else %}X{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .quiz-header {
+    margin-bottom: 20px;
+  }
+
+  .quiz-results {
+    margin-top: 20px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+
+  .table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  .table th {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .table tr:hover {
+    background-color: #e9ecef;
+  }
+
+  .table td {
+    vertical-align: top;
+  }
+
+  .table th, .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+
+{% endblock %}

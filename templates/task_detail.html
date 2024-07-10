@@ -52,14 +52,19 @@
                     <p>{{task.body}}</p>
                 </div>
 
-                <div class="col-xl-12 mb-4 mt-5  mb-lg-0">
-                    <h3  class="h4 mb-3 mb-lg-4 pb-lg-2">
-                        <a href="#" class="vs-btn">
-
-                            Bilimlarni sinab ko'rish
-                        </a>
+                <div class="col-xl-12 mb-4 mt-5 mb-lg-0">
+                    <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">
+                        {% if categories %}
+                            {% for category in categories %}
+                                <a href="/category/{{ category.id }}/quiz/" class="vs-btn">
+                                    {{ category.name }} Bilimlarni sinab ko'rish
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                            <p>No quizzes available for this subject.</p>
+                        {% endif %}
                     </h3>
-                 </div>
+                </div>
             </div>
         </div>
     </div>
