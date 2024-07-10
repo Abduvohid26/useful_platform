@@ -1,8 +1,7 @@
 {% extends 'wrap.html' %}
 {% block content %}
-<div style="margin-top: 50px; margin-bottom: 50px; padding: 30px ;" class="quiz-container">
+<div class="quiz-container">
   <div class="quiz-header">
-<!--    <h2>You answered {{ result.score }} out of {{ result.category.quiz_count }} questions correctly</h2>-->
     <h5>Tog'ri javoblar soni -> {{result.score}}</h5>
     <h5>Noto'g'ri javoblar soni -> {{result.fail}}</h5>
     <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Orqaga</button>
@@ -12,10 +11,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Question</th>
-          <th>Correct Answer</th>
-          <th>Your Answer</th>
-          <th>Boolean</th>
+          <th>Savol</th>
+          <th>To'g'ri javob</th>
+          <th>Sizning javobingiz</th>
+          <th>To'g'ri/Xato</th>
         </tr>
       </thead>
       <tbody>
@@ -37,8 +36,8 @@
 <style>
   .quiz-container {
     max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 50px auto;
+    padding: 30px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -46,6 +45,7 @@
 
   .quiz-header {
     margin-bottom: 20px;
+    text-align: center;
   }
 
   .quiz-results {
@@ -85,6 +85,36 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    .quiz-container {
+      padding: 20px;
+    }
+
+    .quiz-header h5, .quiz-header button {
+      font-size: 16px;
+    }
+
+    .table th, .table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quiz-container {
+      padding: 15px;
+    }
+
+    .quiz-header h5, .quiz-header button {
+      font-size: 14px;
+    }
+
+    .table th, .table td {
+      padding: 6px;
+      font-size: 12px;
+    }
   }
 </style>
 
