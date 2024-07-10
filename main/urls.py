@@ -11,8 +11,7 @@ urlpatterns = [
     path('task/<int:task_id>/', TaskDetailView.as_view(), name='task_detail'),
     # path('test/<int:test_id>/quiz/', QuizView.as_view(), name='quiz'),
     path('category/<int:category_id>/quiz/', QuizView.as_view(), name='quiz'),
-    path('result/<int:result_id>/', ResultView.as_view(), name='result'),
-    path('login-register/', LoginRegisterView.as_view(), name='login-register'),
+    path('result/', ResultView.as_view(), name='result'),    path('login-register/', LoginRegisterView.as_view(), name='login-register'),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register')
 ]

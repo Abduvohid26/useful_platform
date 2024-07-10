@@ -1,30 +1,30 @@
 {% extends 'wrap.html' %}
 {% block content %}
-<div class="quiz-container">
+<div style="margin-top: 50px; margin-bottom: 50px; padding: 30px;" class="quiz-container">
   <div class="quiz-header">
-    <h5>Tog'ri javoblar soni -> {{result.score}}</h5>
-    <h5>Noto'g'ri javoblar soni -> {{result.fail}}</h5>
-    <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Orqaga</button>
+    <h5>Tog'ri javoblar soni -> {{ result.score }}</h5>
+    <h5>Noto'g'ri javoblar soni -> {{ result.fail }}</h5>
+    <a href="{% url 'main:quiz' result.category.id %}" class="btn btn-primary">Orqaga qaytish</a>
   </div>
 
   <div class="quiz-results">
     <table class="table">
       <thead>
         <tr>
-          <th>Savol</th>
-          <th>To'g'ri javob</th>
-          <th>Sizning javobingiz</th>
-          <th>To'g'ri/Xato</th>
+          <th>Question</th>
+          <th>Correct Answer</th>
+          <th>Your Answer</th>
+          <th>Boolean</th>
         </tr>
       </thead>
       <tbody>
-        {% for question_result in result.question_results.all %}
+        {% for question_result in result.question_results %}
         <tr>
-          <td>{{ question_result.question.title }}</td>
-          <td>{{ question_result.correct_variant.title }}</td>
-          <td>{{ question_result.selected_variant.title }}</td>
-           <td style="color: {% if question_result.is_correct %}green{% else %}red{% endif %};">
-           {% if question_result.is_correct %}✓{% else %}X{% endif %}
+          <td>{{ question_result.question_id }}</td>
+          <td>{{ question_result.correct_variant_id }}</td>
+          <td>{{ question_result.selected_variant_id }}</td>
+          <td style="color: {% if question_result.is_correct %}green{% else %}red{% endif %};">
+            {% if question_result.is_correct %}✓{% else %}X{% endif %}
           </td>
         </tr>
         {% endfor %}
@@ -36,8 +36,8 @@
 <style>
   .quiz-container {
     max-width: 800px;
-    margin: 50px auto;
-    padding: 30px;
+    margin: 0 auto;
+    padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -45,7 +45,6 @@
 
   .quiz-header {
     margin-bottom: 20px;
-    text-align: center;
   }
 
   .quiz-results {
@@ -86,36 +85,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
-  @media (max-width: 768px) {
-    .quiz-container {
-      padding: 20px;
-    }
-
-    .quiz-header h5, .quiz-header button {
-      font-size: 16px;
-    }
-
-    .table th, .table td {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .quiz-container {
-      padding: 15px;
-    }
-
-    .quiz-header h5, .quiz-header button {
-      font-size: 14px;
-    }
-
-    .table th, .table td {
-      padding: 6px;
-      font-size: 12px;
-    }
-  }
 </style>
-
 {% endblock %}
