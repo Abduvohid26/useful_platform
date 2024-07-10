@@ -77,9 +77,11 @@
         <div class="vs-menu-area text-center">
             <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
-                <a href="/">
-                MY Logo    <!-- <img src="/static/img/logo.svg" alt="Educino"> -->
-                </a>
+                {% for main_page in main_pages %}
+                <a href="/" style="font-size: 50px;">
+                    <img style="width: 100px;" src="{{main_page.logo.url}}" alt="">
+                </a> 
+                {% endfor %}
             </div>
             <div class="vs-mobile-menu">
                 <ul>
@@ -117,10 +119,12 @@
                 <div class="row justify-content-between align-items-center gx-50">
                     <div class="col d-none d-xl-block">
                         <div class="header-links">
+                            {% for main_page in main_pages %}
                             <ul>
-                                <li><i class="fas fa-phone-alt"></i>Tel: <a href="+4402076897888">+99 (899) 000 00 00</a></li>
-                                <li><i class="fas fa-envelope"></i>Email: <a href="mailto:info@company.co.uk">info@platform.uz</a></li>
+                                <li><i class="fas fa-phone-alt"></i>Tel: <a href="+4402076897888">{{main_page.phone}}</a></li>
+                                <li><i class="fas fa-envelope"></i>Email: <a href="mailto:info@company.co.uk">{{main_page.email}}</a></li>
                             </ul>
+                            {% endfor %}
                         </div>
                     </div>
                     {% if request.user.is_authenticated %}
@@ -132,9 +136,11 @@
                     {% endif %}
                     <div class="col-md-auto text-center">
                         <div class="header-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            {% for main_page in main_pages %}
+                            <a target="_blank" href="{{main_page.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                            <a target="_parent" href="{{main_page.twitter}}"><i class="fab fa-twitter"></i></a>
+                            <a target="_blank" href="{{main_page.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -153,9 +159,13 @@
                 <div class="container position-relative z-index-common">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
-                            <div class="vs-logo"> <a href="/" style="font-size: 50px;">
-                                MY Logo <!-- <img src="/static/img/logo.svg" alt="logo"> -->
-                            </a> </div>
+                            <div class="vs-logo"> 
+                                {% for main_page in main_pages %}
+                                <a href="/" style="font-size: 50px;">
+                                    <img style="width: 100px;" src="{{main_page.logo.url}}" alt="">
+                                </a> 
+                                {% endfor %}
+                        </div>
                         </div>
                         <div class="col text-end text-xl-center">
                             <nav class="main-menu menu-style1 d-none d-lg-block">
@@ -199,14 +209,17 @@
                 <div class="col-md-6 col-xl-auto">
                     <div class="widget footer-widget">
                         <div class="vs-widget-about">
+                            {% for main_page in main_pages %}
                             <div class="footer-logo">
-                                 <a href="/">
-                                    <!-- <img src="/static/img/logo-white.svg" alt="logo"> -->
-                                   <h2>  My Logo </h2>
-                                </a> </div>
-                            <p class="footer-text">Lorem ipsum dolor sit amet, consectet rem ips dolor sit amet. sum dolor sit amet, consectet e dolor sit amet, comod.</p>
-                            <p class="footer-info"><i class="fal fa-phone-alt"></i><a class="text-inherit" href="tel:++11234562228">(+998) 99 123 456 789</a></p>
-                            <p class="footer-info"><i class="fal fa-envelope"></i><a class="text-inherit" href="mailto:info@example.com">fayzullo@domainname.com</a></p>
+                                <a href="/" style="font-size: 50px;">
+                                    <img style="width: 100px;" src="{{main_page.logo.url}}" alt="">
+                                </a> 
+                                
+                             </div>
+                            <p class="footer-text">{{main_page.text}}</p>
+                            <p class="footer-info"><i class="fal fa-phone-alt"></i><a class="text-inherit" href="tel:++11234562228">{{main_page.phone}}</a></p>
+                            <p class="footer-info"><i class="fal fa-envelope"></i><a class="text-inherit" href="mailto:info@example.com">{{main_page.email}}</a></p>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -268,13 +281,15 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="text-center col-lg-auto">
-                    <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> 2024 <a href="index.html">Platform Name</a>. All Rights Reserved By <a href="#">Ibrohim</a></p>
+                    <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> 2024 <a href="index.html">Platform Name</a>. All Rights Reserved By <a href="#">Abudevs</a></p>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <div class="social-style1">
-                        <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
-                        <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i>Linked In</a>
+                        {% for main_page in main_pages %}
+                        <a target="_blank" href="{{main_page.facebook}}"><i class="fab fa-facebook-f"></i>Facebook</a>
+                        <a target="_blank" href="{{main_page.twitter}}"><i class="fab fa-twitter"></i>Twitter</a>
+                        <a target="_blank" href="{{main_page.linkedin}}"><i class="fab fa-linkedin-in"></i>Linked In</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

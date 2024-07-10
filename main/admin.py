@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models import (User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, ProblemImages, Contact,
-                     Question, Category, Variant, Result)
+                     Question, Category, Variant, Result, MainPage)
 
 admin.site.register([User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, ProblemImages, Contact,
-                     Variant, Result])
+                     Variant, Result, MainPage])
 
 
 @admin.register(Category)

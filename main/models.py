@@ -148,3 +148,18 @@ class QuestionResult(models.Model):
 
     def __str__(self):
         return f"Result for {self.result.user.username} in {self.question.title}"
+    
+
+
+class MainPage(models.Model):
+    logo = models.ImageField(default='logo.jpg', upload_to='site-logo')
+    facebook = models.CharField(max_length=255)
+    twitter = models.CharField(max_length=255)
+    linkedin = models.CharField(max_length=255)
+    phone = models.CharField(max_length=100)
+    email = models.CharField(max_length=200)
+    text = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.phone
+     

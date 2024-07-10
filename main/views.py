@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login
 from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, Contact, Variant, Question, \
-    Category, Result, QuestionResult
+    Category, MainPage
 from django.contrib import messages
 from django.utils import timezone
 import json
@@ -14,7 +14,8 @@ class HomeView(View):
         welcome = Welcome.objects.all()
         about_platform = AboutPlatform.objects.all()
         direction = Directions.objects.all()
-        context = {'welcome': welcome, 'about_platforms': about_platform, 'directions': direction}
+        main_page = MainPage.objects.all()
+        context = {'welcome': welcome, 'about_platforms': about_platform, 'directions': direction, 'main_pages': main_page}
         return render(request, 'index.html', context=context, status=200)
 
     def post(self, request):
