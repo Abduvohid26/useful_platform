@@ -301,8 +301,8 @@
             </div>    
         </div>   
      </section>    
-   
-   
+    
+    
    <!--==============================
       Upcoming Events Area
   ==============================-->
@@ -367,6 +367,25 @@
         </div>
     </div>
 </section>
+
+<div class="container" style="max-width: 1200px;">
+    <div class="row gx-50 justify-content-center">
+        <div class="col-lg-6 col-xl-5">
+            <div class="hero-content">
+                <h1 class="hero-title">Mutaxasisligingizni biz bilan oshiring.</h1>
+                <p class="hero-text">Bizning platforma orqali o'z yo'nalishingiz bo'yicha bilimlaringizni oshirishingiz mumkin</p>
+                <form action="" method="get" class="form-style3">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="form-btn">
+                        <button type="submit" class="vs-btn">Bilimlarni sinash</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
    
    
 

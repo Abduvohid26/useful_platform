@@ -4,18 +4,30 @@ from django.contrib.auth import authenticate, login
 from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, Contact, Variant, Question, \
     Category, MainPage, Result, QuestionResult
 from django.contrib import messages
-from django.utils import timezone
-import json
-from django.http import HttpResponseBadRequest
+from .forms import SubjectSelectForm
 
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
+        form = SubjectSelectForm(data=request.GET)
         welcome = Welcome.objects.all()
         about_platform = AboutPlatform.objects.all()
         direction = Directions.objects.all()
         main_page = MainPage.objects.all()
-        context = {'welcome': welcome, 'about_platforms': about_platform, 'directions': direction, 'main_pages': main_page}
+        
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            category = Category.objects.filter(subject=subject).first()
+            if category:
+                return redirect('main:quiz', category_id=category.id)
+        
+        context = {
+            'welcome': welcome,
+            'about_platforms': about_platform,
+            'directions': direction,
+            'main_pages': main_page,
+            'form': form,
+        }
         return render(request, 'index.html', context=context, status=200)
 
     def post(self, request):
