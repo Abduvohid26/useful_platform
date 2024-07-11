@@ -78,7 +78,7 @@
             <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
             <div class="mobile-logo">
                 {% for main_page in main_pages %}
-                <a href="/" style="font-size: 50px;">
+                <a href="/" style="font-size: 50px; border-radius: 50%;">
                     <img style="width: 100px;" src="{{main_page.logo.url}}" alt="">
                 </a> 
                 {% endfor %}
@@ -87,7 +87,7 @@
                 <ul>
                     <li class=""><a href="/">Bosh sahifa</a></li>
                     <li>
-                        <a href="about.html">Biz xaqimizda</a>
+                        <a href="/">Biz xaqimizda</a>
                     </li>
 
                     <li>
@@ -95,7 +95,7 @@
                     </li>
                     
                     <li>
-                        <a href="contact.html">Aloqa</a>
+                        <a href="/">Aloqa</a>
                     </li>
                 </ul>
             </div>
@@ -161,7 +161,7 @@
                         <div class="col-auto">
                             <div class="vs-logo"> 
                                 {% for main_page in main_pages %}
-                                <a href="/" style="font-size: 50px;">
+                                <a href="/" style="font-size: 50px; border-radius: 50%;">
                                     <img style="width: 100px;" src="{{main_page.logo.url}}" alt="">
                                 </a> 
                                 {% endfor %}
@@ -174,10 +174,10 @@
                                         <a href="{% url 'main:home' %}">Bosh sahifa</a>
                                        
                                     </li>
-                                    <li> <a href="about.html">Biz xaqimizda</a> </li>
+                                    <li> <a href="/">Biz xaqimizda</a> </li>
                                    
                                    
-                                    <li><a href="contact.html">Aloqa</a></li>
+                                    <li><a href="/">Aloqa</a></li>
                                 </ul>
                             </nav>
                             <button class="vs-menu-toggle d-inline-block d-lg-none"><i class="fal fa-bars"></i></button>
@@ -211,7 +211,7 @@
                         <div class="vs-widget-about">
                             {% for main_page in main_pages %}
                             <div class="footer-logo">
-                                <a href="/" style="font-size: 50px;">
+                                <a href="/" style="font-size: 50px; border-radius: 50%;">
                                     <img style="width: 100px;" src="{{main_page.logo.url}}" alt="">
                                 </a> 
                                 

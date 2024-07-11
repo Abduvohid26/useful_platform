@@ -41,10 +41,11 @@
                 </div>
             </div>
         </div>
+        {% for task in tasks %}
         <div class="position-relative overflow-hidden rounded-20 mt-5">
-            <img src="/static/img/about/academic-1.jpg" alt="blog video">
-            <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video position-center"><i class="fas fa-play"></i></a>
+                <a href=""><img src="{{task.video.url}}" alt=""></a>
         </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}

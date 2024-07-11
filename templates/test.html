@@ -1,80 +1,34 @@
 {% extends 'wrap.html' %}
-
 {% block content %}
 <div class="quiz-container" id="quiz">
-  <form method="post" class="quiz-form" data-category-id="{{ category.id }}" style="width: 1000px !important">
+  <form method="post">
     {% csrf_token %}
-    <div class="quiz-header" style="padding: 0px 20px;width: 900px;">
-      {% for question, variants, correct_variant_id in questions_with_correct_variant %}
-      <h4 style="width:700px;">{{ question.title }}</h4>
-      {% if question.image %}
-      <img src="{{ question.image.url }}" alt="{{ question.title }}" class="question-image">
-      {% endif %}
-      <ul>
-        {% for variant in variants %}
-        <li>
-          <input type="radio" name="question_{{ question.id }}" id="variant_{{ variant.id }}" value="{{ variant.id }}" data-correct-variant-id="{% if variant.id == correct_variant_id %}{{ variant.id }}{% endif %}" class="answer">
-          <label for="variant_{{ variant.id }}" style="width: 200px;">{{ variant.title }}</label>
-        </li>
-        {% endfor %}
-      </ul>
+    <div class="quiz-header">
+      {% for question in questions %}
+      <div class="question">
+        <h2>{{ question.title }}</h2>
+        {% if question.image %}
+        <img src="{{ question.image.url }}" alt="{{ question.title }}">
+        {% endif %}
+        <ul>
+          {% for variant in question.variants.all %}
+          <li>
+            <input required type="radio" name="question_{{ question.id }}" id="variant_{{ variant.id }}" value="{{ variant.id }}" class="answer">
+            <label for="variant_{{ variant.id }}">{{ variant.title }}</label>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
       {% endfor %}
     </div>
-    <button type="submit" id="submit" class="submit-button">Submit</button>
+    <button type="submit" id="submit">Submit</button>
   </form>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const data = new FormData(form);
-        const result = {
-            category_id: form.dataset.categoryId,
-            score: 0,
-            fail: 0,
-            question_results: []
-        };
-
-        document.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
-            const questionId = input.name.split('_')[1];
-            const selectedVariantId = input.value;
-            const correctVariantId = input.dataset.correctVariantId;
-
-            const isCorrect = selectedVariantId === correctVariantId;
-            result.question_results.push({
-                question_id: questionId,
-                correct_variant_id: correctVariantId,
-                selected_variant_id: selectedVariantId,
-                is_correct: isCorrect
-            });
-
-            if (isCorrect) {
-                result.score += 1;
-            } else {
-                result.fail += 1;
-            }
-        });
-
-        document.cookie = `quiz_result=${JSON.stringify(result)}; path=/; max-age=3600`;
-
-        form.submit();
-    });
-});
-
-</script>
-
 <style>
   .quiz-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust as needed */
-  }
-
-  .quiz-form {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -85,33 +39,42 @@
     margin-bottom: 20px;
   }
 
-  .question-image {
+  .question {
+    margin-bottom: 20px;
+  }
+
+  .question img {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
   }
 
-  ul {
+  .question ul {
     list-style-type: none;
     padding: 0;
   }
 
-  li {
+  .question li {
     margin-bottom: 10px;
   }
 
-  .submit-button {
+  .question label {
+    margin-left: 10px;
+  }
+
+  button#submit {
+    display: inline-block;
     padding: 10px 20px;
     background-color: #007bff;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
 
-  .submit-button:hover {
+  button#submit:hover {
     background-color: #0056b3;
   }
 </style>
+
 {% endblock %}

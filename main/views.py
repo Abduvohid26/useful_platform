@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login
 from .models import User, Welcome, AboutPlatform, Directions, Sciences, Subject, Problems, Contact, Variant, Question, \
-    Category, MainPage
+    Category, MainPage, Result, QuestionResult
 from django.contrib import messages
 from django.utils import timezone
 import json
@@ -107,28 +107,13 @@ class QuizView(View):
     def get(self, request, category_id):
         category = get_object_or_404(Category, id=category_id)
         questions = Question.objects.filter(category=category).prefetch_related('variants')
-        questions_with_correct_variant = []
-        
-        for question in questions:
-            variants = question.variants.all()
-            correct_variant_id = None
-            for variant in variants:
-                if variant.is_true:
-                    correct_variant_id = variant.id
-                    break
-            questions_with_correct_variant.append((question, variants, correct_variant_id))
-        
-        return render(request, 'test.html', {'category': category, 'questions_with_correct_variant': questions_with_correct_variant})
+        return render(request, 'test.html', {'category': category, 'questions': questions})
 
     def post(self, request, category_id):
         category = get_object_or_404(Category, id=category_id)
-        questions = Question.objects.filter(category=category)        
-        result = {
-            'category_id': category.id,  # Add category_id to the result object
-            'score': 0,
-            'fail': 0,
-            'question_results': []
-        }
+        questions = Question.objects.filter(category=category)
+        result = Result.objects.create(category=category, user=request.user, score=0, success=0, fail=0)
+
         for question in questions:
             selected_variant_id = request.POST.get(f'question_{question.id}')
             if selected_variant_id:
@@ -136,33 +121,25 @@ class QuizView(View):
                 correct_variant = question.variants.get(is_true=True)
                 is_correct = selected_variant == correct_variant
 
-                result['question_results'].append({
-                    'question_id': question.id,
-                    'correct_variant_id': correct_variant.id,
-                    'selected_variant_id': selected_variant.id,
-                    'is_correct': is_correct
-                })
+                QuestionResult.objects.create(
+                    result=result,
+                    question=question,
+                    correct_variant=correct_variant,
+                    selected_variant=selected_variant,
+                    is_correct=is_correct
+                )
 
                 if is_correct:
-                    result['score'] += 1
+                    result.score += 1
+                    result.success += 1
                 else:
-                    result['fail'] += 1
+                    result.fail += 1
 
-        response = redirect('main:result')
-        response.set_cookie('quiz_result', json.dumps(result), max_age=604800 * 2)
-        return response
+        result.save()
+        return redirect('main:result', result_id=result.id)
 
-    
 
 class ResultView(View):
-    def get(self, request):
-        quiz_result_str = request.COOKIES.get('quiz_result')
-        if not quiz_result_str:
-            return HttpResponseBadRequest("Quiz result cookie not found.")
-        
-        try:
-            result = json.loads(quiz_result_str)
-        except json.JSONDecodeError:
-            return HttpResponseBadRequest("Invalid quiz result data.")
-
+    def get(self, request, result_id):
+        result = get_object_or_404(Result, id=result_id, user=request.user)
         return render(request, 'test_result.html', {'result': result})

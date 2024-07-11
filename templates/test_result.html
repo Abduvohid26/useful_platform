@@ -1,10 +1,11 @@
 {% extends 'wrap.html' %}
 {% block content %}
-<div style="margin-top: 50px; margin-bottom: 50px; padding: 30px;" class="quiz-container">
+<div class="quiz-container">
   <div class="quiz-header">
-    <h5>Tog'ri javoblar soni -> {{ result.score }}</h5>
-    <h5>Noto'g'ri javoblar soni -> {{ result.fail }}</h5>
-    <a href="{% url 'main:quiz' result.category.id %}" class="btn btn-primary">Orqaga qaytish</a>
+<!--    <h2>You answered {{ result.score }} out of {{ result.category.quiz_count }} questions correctly</h2>-->
+    <h4>To'g'ri javoblar -> {{result.score}}</h4>
+    <h4>No'to'g'ri javoblar -> {{result.fail}}</h4>
+    <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Oraqaga qaytish</button>
   </div>
 
   <div class="quiz-results">
@@ -14,17 +15,21 @@
           <th>Question</th>
           <th>Correct Answer</th>
           <th>Your Answer</th>
-          <th>Boolean</th>
+          <th>Result</th>
         </tr>
       </thead>
       <tbody>
-        {% for question_result in result.question_results %}
+        {% for question_result in result.question_results.all %}
         <tr>
-          <td>{{ question_result.question_id }}</td>
-          <td>{{ question_result.correct_variant_id }}</td>
-          <td>{{ question_result.selected_variant_id }}</td>
-          <td style="color: {% if question_result.is_correct %}green{% else %}red{% endif %};">
-            {% if question_result.is_correct %}✓{% else %}X{% endif %}
+          <td>{{ question_result.question.title }}</td>
+          <td>{{ question_result.correct_variant.title }}</td>
+          <td>{{ question_result.selected_variant.title }}</td>
+          <td>
+            {% if question_result.is_correct %}
+              <span style="color: green;">✔</span>
+            {% else %}
+              <span style="color: red;">✘</span>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
@@ -86,4 +91,5 @@
     text-overflow: ellipsis;
   }
 </style>
+
 {% endblock %}
