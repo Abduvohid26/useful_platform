@@ -1,10 +1,10 @@
 {% extends 'wrap.html' %}
 {% block content %}
     <!-- Breadcrumb Section -->
-    <div class="breadcumb-wrapper " data-bg-src="/static/img/direction.avif">
+    <div class="breadcumb-wrapper" data-bg-src="/static/img/direction.avif">
         <div class="container z-index-common">
             <div class="breadcumb-content">
-                <h1 class="breadcumb-title"> Ijtimoiy fanlar </h1>
+                <h1 class="breadcumb-title">Ijtimoiy fanlar</h1>
                 <p class="breadcumb-text">Search over 200 individual encyclopedias and reference books.</p>
                 <div class="breadcumb-menu-wrap">
                     <ul class="breadcumb-menu">
@@ -21,12 +21,12 @@
         <div class="container">
             <div class="title-area text-md-center mb-4 mb-lg-5">
                 <div class="sec-icon"><span class="vs-circle"></span></div>
-                <span class="sec-subtitle"> Yo'nalish xaqida  </span>
-                <h2 class="sec-title h1">  Ijtimoiy fanlar  </h2>
+                <span class="sec-subtitle">Yo'nalish xaqida</span>
+                <h2 class="sec-title h1">Ijtimoiy fanlar</h2>
             </div>
             <div class="row gx-60">
                 <div class="col-xl-12 mb-4 mb-lg-0">
-                    <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Yo'nalish xaqida </h3>
+                    <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">Yo'nalish xaqida</h3>
                     <p>{{ direction.body }}</p>
                 </div>
             </div>
@@ -39,28 +39,41 @@
                     border: 1px solid rgb(252, 248, 248);
                     font-size: 20px;
                 }
+                .accordion-button::after {
+                    content: '+';
+                    font-size: 20px;
+                    float: right;
+                }
+                .accordion-button.collapsed::after {
+                    content: '+';
+                }
+                .accordion-button:not(.collapsed)::after {
+                    content: '-';
+                }
             </style>
 
             <!-- Sciences and Subjects Section -->
             <div class="overflow-hidden space-extra-bottom mt-5">
                 <div class="container">
                     <div class="row">
-                        <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Yo'nalish Fanlari </h3>
+                        <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">Yo'nalish Fanlari</h3>
                         <div class="col-lg-12">
                             <div class="accordion-style3 wow fadeInUp" data-wow-delay="0.2s">
                                 <div class="accordion" id="faqVersion1">
                                     {% if sciences %}
                                     {% for science in sciences %}
-                                    <div class="accordion-item active">
-                                        <div class="accordion-header" id="headingOne">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{ science.name }}</button>
+                                    <div class="accordion-item">
+                                        <div class="accordion-header" id="heading{{ forloop.counter }}">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                                                {{ science.name }}
+                                            </button>
                                         </div>
-                                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqVersion1">
+                                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqVersion1">
                                             <div class="accordion-body">
-                                                <h3 class="h4 mb-3 mb-lg-4 pb-lg-2"> Mavzular </h3>
+                                                <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">Mavzular</h3>
                                                 <ul>
                                                     {% for subject in science.subject.all %}
-                                                    <li class="list-item"><a href="/subject/tasks/{{subject.id}}/">{{ subject.name }}</a></li>
+                                                    <li class="list-item"><a href="/subject/tasks/{{ subject.id }}/">{{ subject.name }}</a></li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
@@ -78,4 +91,25 @@
             </div>
         </div>
     </section>
+
+    <!-- Custom JavaScript to toggle icons -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    setTimeout(() => {
+                        accordionButtons.forEach(btn => {
+                            if (btn.classList.contains('collapsed')) {
+                                btn.querySelector('::after').textContent = '+';
+                            } else {
+                                btn.querySelector('::after').textContent = '-';
+                            }
+                        });
+                    }, 300);
+                });
+            });
+        });
+    </script>
 {% endblock %}
