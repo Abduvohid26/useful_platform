@@ -70,7 +70,7 @@
                                         </div>
                                         <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqVersion1">
                                             <div class="accordion-body">
-                                                <h3 class="h4 mb-3 mb-lg-4 pb-lg-2">Mavzular</h3>
+    
                                                 <ul>
                                                     {% for subject in science.subject.all %}
                                                     <li class="list-item"><a href="/subject/tasks/{{ subject.id }}/">{{ subject.name }}</a></li>
@@ -104,7 +104,7 @@
                             if (btn.classList.contains('collapsed')) {
                                 btn.querySelector('::after').textContent = '+';
                             } else {
-                                btn.querySelector('::after').textContent = '-';
+                                btn.querySelector('::after').textContent = '-';  
                             }
                         });
                     }, 300);
