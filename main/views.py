@@ -14,6 +14,8 @@ class HomeView(View):
         about_platform = AboutPlatform.objects.all()
         direction = Directions.objects.all()
         main_page = MainPage.objects.all()
+        subject = Subject.objects.all()
+        question = Question.objects.all()
         
         if form.is_valid():
             subject = form.cleaned_data['subject']
@@ -27,6 +29,8 @@ class HomeView(View):
             'directions': direction,
             'main_pages': main_page,
             'form': form,
+            'subjects': subject,
+            'questions': question
         }
         return render(request, 'index.html', context=context, status=200)
 
@@ -119,12 +123,15 @@ class QuizView(View):
     def get(self, request, category_id):
         category = get_object_or_404(Category, id=category_id)
         questions = Question.objects.filter(category=category).prefetch_related('variants')
-        return render(request, 'test.html', {'category': category, 'questions': questions})
+        directions = Directions.objects.all()
+        main_page = MainPage.objects.all()
+        return render(request, 'test.html', {'category': category, 'questions': questions, 
+                                             'directions': directions, 'main_pages': main_page})
 
     def post(self, request, category_id):
         category = get_object_or_404(Category, id=category_id)
         questions = Question.objects.filter(category=category)
-        result = Result.objects.create(category=category, user=request.user, score=0, success=0, fail=0)
+        result = Result.objects.create(category=category, score=0, success=0, fail=0)
 
         for question in questions:
             selected_variant_id = request.POST.get(f'question_{question.id}')
@@ -153,5 +160,8 @@ class QuizView(View):
 
 class ResultView(View):
     def get(self, request, result_id):
-        result = get_object_or_404(Result, id=result_id, user=request.user)
-        return render(request, 'test_result.html', {'result': result})
+        directions = Directions.objects.all()
+        main_page = MainPage.objects.all()
+        result = get_object_or_404(Result, id=result_id)
+        return render(request, 'test_result.html', {'result': result, 'directions': directions, 
+                                                'main_pages': main_page})

@@ -124,7 +124,7 @@ class Variant(models.Model):
 
 class Result(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(blank=True, null=True)
     score = models.PositiveIntegerField(default=0)
