@@ -16,7 +16,8 @@ class HomeView(View):
         main_page = MainPage.objects.all()
         subject = Subject.objects.all()
         question = Question.objects.all()
-        
+        subject_count = subject.count()
+        print(subject_count)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             category = Category.objects.filter(subject=subject).first()
@@ -29,7 +30,7 @@ class HomeView(View):
             'directions': direction,
             'main_pages': main_page,
             'form': form,
-            'subjects': subject,
+            'subject_count': subject_count,
             'questions': question
         }
         return render(request, 'index.html', context=context, status=200)
