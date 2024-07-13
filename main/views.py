@@ -49,7 +49,8 @@ class DirectionView(View):
         direction = get_object_or_404(Directions, id=self.kwargs['id'])
         sciences = Sciences.objects.filter(directions=direction)
         directions = Directions.objects.all()
-        context = {'direction': direction, 'sciences': sciences, 'directions': directions}
+        main_page = MainPage.objects.all()
+        context = {'direction': direction, 'sciences': sciences, 'directions': directions, 'main_pages': main_page}
         return render(request, 'direction.html', context=context, status=200)
 
 
@@ -59,8 +60,9 @@ class TaskView(View):
         subject = get_object_or_404(Subject, id=subject_id)
         tasks = Problems.objects.filter(subject=subject)
         directions = Directions.objects.all()
+        main_page = MainPage.objects.all()
         return render(request, 'task.html', context={'subject': subject, 'tasks': tasks,
-                                                     'directions': directions})
+                                                     'directions': directions, 'main_pages': main_page})
 
 
 class TaskDetailView(View):
@@ -69,7 +71,8 @@ class TaskDetailView(View):
         task = get_object_or_404(Problems, id=task_id)
         directions = Directions.objects.all()
         categories = Category.objects.filter(subject=task.subject)
-        context = {'task': task, 'directions': directions, 'categories': categories}
+        main_page = MainPage.objects.all()
+        context = {'task': task, 'directions': directions, 'categories': categories, 'main_pages': main_page}
         return render(request, 'task_detail.html', context=context)
 
 
