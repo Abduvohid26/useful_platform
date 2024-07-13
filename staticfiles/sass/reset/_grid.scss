@@ -1,0 +1,75 @@
+.slick-track>[class*=col] {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x)/ 2);
+  padding-left: calc(var(--bs-gutter-x)/ 2);
+  margin-top: var(--bs-gutter-y);
+}
+
+@media (min-width: $xl) {
+  .row:not([class*="gx-"]) {
+    --bs-gutter-x: 30px;
+  }
+}
+
+.gy-30 {
+  --bs-gutter-y: 30px;
+}
+
+.gx-1px {
+  --bs-gutter-x: 1px;
+}
+
+.gx-15 {
+  --bs-gutter-x: 15px;
+}
+
+.gx-gy {
+  --bs-gutter-y: var(--bs-gutter-x);
+}
+
+@media (min-width: $xl) {
+  .gx-45 {
+    --bs-gutter-x: 45px;
+  }
+
+  .gx-50 {
+    --bs-gutter-x: 50px;
+  }
+
+  .gx-60 {
+    --bs-gutter-x: 60px;
+  }
+
+  .gx-70 {
+    --bs-gutter-x: 70px;
+  }
+
+  .gx-80 {
+    --bs-gutter-x: 80px;
+  }
+
+  .gx-90 {
+    --bs-gutter-x: 80px;
+  }
+
+  .gx-100 {
+    --bs-gutter-x: 100px;
+  }
+}
+
+@media (min-width: $ml) {
+  
+  .gx-20 {
+    --bs-gutter-x: 20px;
+  }
+  
+  .gx-30 {
+    --bs-gutter-x: 30px;
+  }
+
+  .gx-40 {
+    --bs-gutter-x: 40px;
+  }
+}

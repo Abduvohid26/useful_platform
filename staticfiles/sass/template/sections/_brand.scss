@@ -1,0 +1,26 @@
+.brand-style1 {
+  background-color: #F6F6F6;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  height: calc(100% - 30px);
+  min-height: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease 0.4s;
+
+  img {
+    transition: all ease 0.4s;
+    filter: none;
+  }
+  
+  &:hover {
+    background-color: $theme-color;    
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}

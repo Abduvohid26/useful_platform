@@ -1,0 +1,164 @@
+.category-style1 {
+  margin-bottom: 30px;
+  position: relative;
+  
+  .category-img {
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      background-color: $theme-color;
+      transition: all ease .4s;
+    }
+
+    &:after {
+      opacity: 1;
+      visibility: visible;
+      background-color: transparent;
+      background-image: linear-gradient(to top, rgba(#000, 0.8) 10%, transparent 70%);
+    }
+  }
+
+  .icon {
+    background-color: $theme-color;
+    border-radius: 20px;
+    color: $white-color;
+    font-size: 40px;
+    height: 68px;
+    left: 20px;
+    line-height: 68px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    width: 68px;
+    transition: all ease .4s;
+  }
+
+  .category-content {
+    bottom: 0;
+    padding: 30px;
+    position: absolute;
+    transform: translateY(30px);
+    transition: all ease .4s;
+  }
+
+  .category-title {
+    margin: 0 0 5px 0;
+
+    a {
+      color: $white-color;
+
+      &:hover {
+        color: $theme-color2;
+      }
+    }
+  }
+
+  .category-title,
+  .subtitle {
+    color: $white-color;
+  }
+
+  .subtitle {
+    opacity: 0;
+  }
+}
+
+.category-style1:hover,
+.slick-center .category-style1 {
+  .icon {
+    background-color: $white-color;
+    color: $theme-color;
+  }
+
+  .category-img {
+    &:before {
+      opacity: 0.8;
+      visibility: visible;
+    }
+
+    &:after {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .category-content {
+    transform: translateY(0);
+  }
+
+  .subtitle {
+    opacity: 1;
+  }
+}
+
+
+.category-style2 {
+  position: relative;
+  text-align: center;
+  margin-bottom: 21px;
+
+  .category-icon {
+    height: 140px;
+    margin: 0 auto 25px;
+    line-height: 140px;
+    position: relative;
+    width: 140px;
+    z-index: 0;
+  }
+
+  .category-title {
+    margin-bottom: 3px;
+  }
+
+  .category-text {
+    margin: 0;
+  }
+
+  .vs-circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    --circle-bg: #F3F0FF;
+  }
+}
+
+
+@include xs {
+  .category-style1 {
+    .icon {
+      height: 45px;
+      width: 45px;
+      line-height: 45px;
+      font-size: 16px;
+      left: 10px;
+      top: 10px;
+      border-radius: 10px;
+    }
+
+    .category-content {
+      bottom: 0;
+      padding: 15px;
+    }
+
+    .category-title {
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+    }
+  }
+}

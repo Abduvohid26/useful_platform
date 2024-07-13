@@ -1,0 +1,356 @@
+.team-style1 {
+	border: 2px solid rgba(#C1C1C1, 0.1);
+	border-radius: 20px;
+	padding: 30px;
+	position: relative;
+	transition: all ease .4s;
+	margin-bottom: 30px;
+
+	.team-img {
+		border-radius: 20px;
+		overflow: hidden;
+	}
+
+	.team-content {
+		padding-top: 40px;
+		position: relative;
+		text-align: center;
+	}
+
+	.team-review {
+		position: absolute;
+		left: 50%;
+		top: -15px;
+		color: #F6B800;
+		font-size: 14px;
+		line-height: 1;
+		transform: translateX(-50%);
+		padding: 8px 16px;
+		border-radius: 15.5px;
+		background-color: $white-color;
+		width: max-content;
+
+		i {
+			display: inline-block;
+			margin: 0 2px;
+		}
+	}
+
+	.team-name {
+		margin-bottom: 7px;
+		font-size: 28px;
+
+		a {
+			color: $title-color;
+
+			&:hover {
+				color: $theme-color;
+			}
+		}
+	}
+
+	.team-degi {
+		text-transform: uppercase;
+		font-size: 14px;
+		letter-spacing: 0.1em;
+		margin-bottom: 15px;
+	}
+
+	.team-social {
+		a {
+			display: inline-block;
+			border: 1px solid rgba(#C1C1C1, 0.3);
+			border-radius: 50%;
+			color: $body-color;
+			width: var(--icon-size, 50px);
+			height: var(--icon-size, 50px);
+			line-height: var(--icon-size, 50px);
+			font-size: var(--icon-font-size, 16px);
+			margin-right: 6px;
+			text-align: center;
+			transition: all ease .4s;
+
+			&:hover {
+				background-color: $theme-color;
+				color: $white-color;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.team-text {
+		font-size: 16px;
+		max-width: 290px;
+		margin: -0.4em auto 0 auto;
+	}
+
+	&.inner-style {
+		padding: 15px;
+
+		&:hover {
+			transform: scale(1.0);
+			margin: 0;
+		}
+
+		.team-content {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}
+}
+
+.team-style1:hover,
+.slick-center .team-style1 {
+	border: 2px solid $theme-color;
+	box-shadow: 8.55px 23.49px 24px rgba(#231F20, .04);
+
+	.team-social {
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+
+.team-style2 {
+	background-color: $white-color;
+	border: 2px solid transparent;
+	border-radius: 20px;
+	margin-bottom: 30px;
+	overflow: hidden;
+	padding: 30px 35px 35px 35px;
+	position: relative;
+	transition: all ease .4s;
+	z-index: 0;
+
+	.team-courses {
+		background-color: #F8F6FF;
+		border-radius: 5px;
+		color: $theme-color;
+		display: block;
+		margin-bottom: 30px;
+		padding: 8px 15px;
+		text-align: center;
+		transition: all ease .4s;
+	}
+
+	.team-img {
+		margin-bottom: 20px;
+		position: relative;
+
+		img {
+			width: 140px;
+			border-radius: 50%;
+		}
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: -40px;
+			right: -40px;
+			height: 1px;
+			width: 140%;
+			z-index: -1;
+			background-color: #EDEDED;
+		}
+	}
+
+	.team-name {
+		font-size: 28px;
+		margin-bottom: 4px;
+
+		a {
+			color: $title-color;
+
+			&:hover {
+				color: $theme-color;
+			}
+		}
+	}
+
+	.team-degi {
+		text-transform: uppercase;
+		font-size: 14px;
+	}
+
+	.team-rate {
+		color: $title-color;
+		font-weight: bold;
+		margin-bottom: 0;
+	}
+
+	.team-price {
+		color: $theme-color;
+		font-size: 30px;
+	}
+	
+	.team-experi {
+		margin-bottom: 5px;
+		font-size: 14px;
+	}
+
+	.team-review {
+		background-color: $white-color;
+		line-height: 1;
+
+		i {
+			color: #F6B800;
+			display: inline-block;
+			font-size: 14px;
+			line-height: 1;
+			margin-right: 3px;
+		}
+	}
+
+	&:hover {
+		box-shadow: -23.34px 8px 24px rgba(#231F20, .09);
+		border-color: $theme-color;
+
+		.team-courses {
+			background-color: $theme-color;
+			color: $white-color;
+		}
+	}
+
+
+	&.has-border {
+		border: 1px solid $border-color;
+	}
+
+}
+
+.team-details {
+	.team-courses {
+		background-color: #F8F6FF;
+		border-radius: 5px;
+		color: $theme-color;
+		display: inline-block;
+		margin-bottom: 30px;
+		padding: 8px 15px;
+		text-align: center;
+	}
+
+	.team-name {
+		margin-top: -0.2em;
+		margin-bottom: 6px;
+
+		@media (min-width: $ml) {
+			font-size: 42px;
+		}
+	}
+
+	.team-degi {
+		display: block;
+		text-transform: uppercase;
+		font-size: 16px;
+		margin-bottom: 17px;
+	}
+
+	.team-rate {
+		color: $title-color;
+		font-weight: bold;
+		font-size: 18px;
+		margin-bottom: 5px;
+		display: block;
+	}
+	
+	.team-price {
+		color: $theme-color;
+		font-size: 40px;
+	}
+	
+	.team-experi {
+		margin-bottom: 10px;
+	}
+
+	.team-review {
+		display: block;
+		color: #F6B800;
+		font-size: 14px;
+		line-height: 1;
+		letter-spacing: 3px;
+	}
+
+	.social-style2 {
+		margin: 30px 0 0 0;
+	}
+}
+
+.graduation-media {
+	position: relative;
+	display: flex;
+	border-bottom: 1px solid #D1D1D1;
+	gap: 30px 40px;
+	margin-bottom: 23px;
+	padding-bottom: 18px;
+
+	&:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.year {
+		color: $theme-color;
+		min-width: 60px;
+	}
+
+	.media-title {
+		margin-bottom: 8px;
+	}
+
+	.media-text {
+		color: $title-color;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+}
+
+@include lg {
+	.team-style1 {
+		.team-name {
+			font-size: 24px;
+		}
+	}
+
+	.graduation-media {
+		gap: 15px 10px;
+
+		.media-title {
+			margin-bottom: 5px;
+			font-size: 18px;
+		}
+
+		.media-text {
+			font-size: 14px;
+		}
+	}
+}
+
+@include sm {
+	
+	.team-style1 {
+		padding: 10px 10px 20px 10px;
+		--icon-font-size: 14px;
+		--icon-size: 40px;
+
+		.team-name {
+			font-size: 20px;
+		}
+
+		.team-degi {
+			font-size: 13px;
+			letter-spacing: 0;
+		}
+
+		.team-review {
+			font-size: 12px;
+			padding: 9px 13px;
+		}
+	}
+
+	.team-style2 {
+		padding: 30px 20px 35px 20px;
+	}
+}
