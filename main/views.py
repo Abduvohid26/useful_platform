@@ -17,7 +17,6 @@ class HomeView(View):
         subject = Subject.objects.all()
         question = Question.objects.all()
         subject_count = subject.count()
-        print(subject_count)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             category = Category.objects.filter(subject=subject).first()
@@ -78,7 +77,9 @@ class TaskDetailView(View):
 
 class LoginRegisterView(View):
     def get(self, request):
-        return render(request, 'login-register.html')
+        directions = Directions.objects.all()
+        main_page = MainPage.objects.all()
+        return render(request, 'login-register.html', context={'directions': directions, 'main_pages': main_page})
 
 
 class LoginView(View):
