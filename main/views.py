@@ -91,17 +91,17 @@ class LoginView(View):
                 user = User.objects.get(email=username_or_email)
                 username = user.username
             except User.DoesNotExist:
-                messages.warning(request, 'User not found')
+                messages.warning(request, f'Bunday user topilmadi')
                 return redirect('main:login-register')
         else:
             username = username_or_email
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'You are now logged in')
-            return redirect('main:login-register')
+            messages.success(request, 'Tizimga muvaffaqiyattli kirdingiz')
+            return redirect('main:home')
         else:
-            messages.warning(request, 'Invalid username-email or password')
+            messages.warning(request, 'ism yoki email manzil xato kiritildi')
             return redirect('main:login-register')
 
 
@@ -112,15 +112,15 @@ class RegisterView(View):
         password = request.POST.get('signupphone')
 
         if User.objects.filter(email=email).exists():
-            messages.warning(request, 'Email already exists')
+            messages.warning(request, 'mavjud email manzil kiritildi !')
             return redirect('main:login-register')
 
         if User.objects.filter(username=complete_name).exists():
-            messages.warning(request, 'Username already exists')
+            messages.warning(request, 'mavjud ism kiritildi !')
             return redirect('main:login-register')
 
         User.objects.create_user(username=complete_name, email=email, password=password)
-        messages.success(request, 'User created successfully. You can now log in')
+        messages.success(request, 'Muvaffaqiyattli ro\'yxatdan o\'tdingiz ')
         return redirect('main:login-register')
 
 

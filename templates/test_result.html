@@ -21,10 +21,10 @@
         <tbody>
           {% for question_result in result.question_results.all %}
           <tr>
-            <td>{{ question_result.question.title }}</td>
-            <td>{{ question_result.correct_variant.title }}</td>
-            <td>{{ question_result.selected_variant.title }}</td>
-            <td>
+            <td data-label="Question">{{ question_result.question.title }}</td>
+            <td data-label="Correct Answer">{{ question_result.correct_variant.title }}</td>
+            <td data-label="Your Answer">{{ question_result.selected_variant.title }}</td>
+            <td data-label="Result">
               {% if question_result.is_correct %}
                 <span style="color: green;">✔</span>
               {% else %}
@@ -41,12 +41,14 @@
 
 <style>
   .quiz-container {
-    max-width: 800px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
 
   .quiz-header {
@@ -101,20 +103,47 @@
       padding: 10px;
     }
 
-    .table th, .table td {
-      padding: 5px;
-      font-size: 12px;
+    .table {
+      display: block;
     }
 
-    .quiz-header h4, .quiz-header button {
+    .table thead {
+      display: none;
+    }
+
+    .table tbody {
+      display: block;
+    }
+
+    .table tr {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .table td {
+      display: block;
+      text-align: right;
       font-size: 14px;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+    }
+
+    .table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
     }
   }
 
   @media (max-width: 480px) {
-    .table th, .table td {
-      font-size: 10px;
-      /* max-width: 80px; */
+    .table td {
+      font-size: 12px;
     }
 
     .quiz-header h4, .quiz-header button {
@@ -122,5 +151,4 @@
     }
   }
 </style>
-
 {% endblock %}
