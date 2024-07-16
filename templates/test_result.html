@@ -2,39 +2,40 @@
 {% block content %}
 <div class="quiz-container">
   <div class="quiz-header">
-<!--    <h2>You answered {{ result.score }} out of {{ result.category.quiz_count }} questions correctly</h2>-->
     <h4>To'g'ri javoblar -> {{result.score}}</h4>
     <h4>No'to'g'ri javoblar -> {{result.fail}}</h4>
     <button onclick="location.href='{% url 'main:quiz' result.category.id %}'">Oraqaga qaytish</button>
   </div>
 
   <div class="quiz-results">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Question</th>
-          <th>Correct Answer</th>
-          <th>Your Answer</th>
-          <th>Result</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for question_result in result.question_results.all %}
-        <tr>
-          <td>{{ question_result.question.title }}</td>
-          <td>{{ question_result.correct_variant.title }}</td>
-          <td>{{ question_result.selected_variant.title }}</td>
-          <td>
-            {% if question_result.is_correct %}
-              <span style="color: green;">✔</span>
-            {% else %}
-              <span style="color: red;">✘</span>
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Correct Answer</th>
+            <th>Your Answer</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for question_result in result.question_results.all %}
+          <tr>
+            <td>{{ question_result.question.title }}</td>
+            <td>{{ question_result.correct_variant.title }}</td>
+            <td>{{ question_result.selected_variant.title }}</td>
+            <td>
+              {% if question_result.is_correct %}
+                <span style="color: green;">✔</span>
+              {% else %}
+                <span style="color: red;">✘</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -54,6 +55,10 @@
 
   .quiz-results {
     margin-top: 20px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
   }
 
   .table {
@@ -89,6 +94,32 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    .quiz-container {
+      padding: 10px;
+    }
+
+    .table th, .table td {
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    .quiz-header h4, .quiz-header button {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .table th, .table td {
+      font-size: 10px;
+      /* max-width: 80px; */
+    }
+
+    .quiz-header h4, .quiz-header button {
+      font-size: 12px;
+    }
   }
 </style>
 
